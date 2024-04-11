@@ -1,0 +1,1719 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2024 11:58:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GLADOS"
+  DTS:CreatorName="GLADOS\deyanix"
+  DTS:DTSID="{9EBCDC1C-F8CB-42CD-9F84-FC965A620382}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{0CFE2853-E337-4B3A-9D4C-61B3BD125CBB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.141.10.140.ABD_GR01_ODS.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}"
+      DTS:ObjectName="10.141.10.140.ABD_GR01_ODS.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.141.10.140;User ID=sa;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Auto Translate=False;Application Name=SSIS-Package-{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}10.141.10.140.ABD_GR01_ODS.sa;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAThMkRvw3ZkGhJoZmSVtOeQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABvPJySfu5ywuIhLbt4sYTY/y3pFHBy1YLzrxGhQu8eBQAAAAAOgAAAAAIAACAAAAB4zBZ/9uuCnJYo9lv3lxUi/hyuJN9TzIBQ7q7QGBWJlyAAAAC4q1TdSpazW2J8ywoHtDRKnN/NdYRYT3I+166qv9vfJ0AAAACUGn3DTXepR9C6Vg73upY7Bn9elwhnugO6W1W8tjrFf80l6wDtl94rDyYzlmwbQbMF5eE6oa1jrsOURj6AC+WR</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[deyanix.eu32]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{165045FB-4CA9-4204-83C4-6A860E08923A}"
+      DTS:ObjectName="deyanix.eu32">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=deyanix.eu;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Przetwarzanie kategorii produktów"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{660C5C42-7E11-472C-9559-ED900E6D92D8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Przetwarzanie kategorii produktów"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Dostosowanie kodowania tekstów"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[CategoryID_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="CategoryID_WSTR"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[ParentID_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="ParentID_WSTR"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ParentID_WSTR]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CategoryID_STR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CategoryID_STR]"
+                      name="CategoryID_STR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[ParentID_STR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[ParentID_STR]"
+                      name="ParentID_STR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ParentID_WSTR]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Skrócenie tekstów"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[CategoryID]"
+                      cachedDataType="nText"
+                      cachedName="CategoryID"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[Name]"
+                      cachedDataType="nText"
+                      cachedName="Name"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[ParentID]"
+                      cachedDataType="nText"
+                      cachedName="ParentID"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[ParentID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]"
+                      name="CategoryID_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[CategoryID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]"
+                      name="Name_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ParentID_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ParentID_WSTR]"
+                      name="ParentID_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[ParentID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Wpisywanie kategorii do ODS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Category]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.141.10.140.ABD_GR01_ODS.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.141.10.140.ABD_GR01_ODS.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].Columns[Name_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name_WSTR"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].Columns[CategoryID_STR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="CategoryID_STR"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CategoryID_STR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].Columns[ParentID_STR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="ParentID_STR"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ParentID]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[ParentID_STR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ParentID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      name="ParentID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="Ładowanie kategorii z SRC3"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">category</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    _id as CategoryID,
+    name as Name,
+    parentId as ParentID
+FROM category</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[deyanix.eu32]"
+                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu32]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[CategoryID]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[CategoryID]"
+                      name="CategoryID" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[Name]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[ParentID]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[parentId]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].Columns[ParentID]"
+                      name="ParentID" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      dataType="nText"
+                      name="_id" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      dataType="nText"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[parentId]"
+                      dataType="nText"
+                      name="parentId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[_id]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[_id]"
+                      name="_id" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[name]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[parentId]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output].ExternalColumns[parentId]"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[parentId]"
+                      name="parentId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Przetwarzanie kategorii produktów.Paths[Data Conversion Output]"
+              endId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
+              name="Data Conversion Output"
+              startId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Przetwarzanie kategorii produktów.Paths[Data Conversion Output1]"
+              endId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Przetwarzanie kategorii produktów.Paths[ODBC Source Output]"
+              endId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Przetwarzanie produktów"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1989C456-5792-49C0-9F85-6E1170E728D3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Przetwarzanie produktów"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Dostosowanie kodowania tekstów"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[CategoryID_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="CategoryID_WSTR"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[EanCode_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="EanCode_WSTR"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[EanCode_WSTR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[ProductID_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="ProductID_WSTR"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ProductID_WSTR]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CategoryID_STR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CategoryID_STR]"
+                      name="CategoryID_STR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[EanCode_STR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="13"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[EanCode_STR]"
+                      name="EanCode_STR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[EanCode_WSTR]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[ProductID_STR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[ProductID_STR]"
+                      name="ProductID_STR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ProductID_WSTR]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie produktów\Skrócenie tekstów"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Skrócenie tekstów"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[CategoryID]"
+                      cachedDataType="nText"
+                      cachedName="CategoryID"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[EanCode]"
+                      cachedDataType="nText"
+                      cachedName="EanCode"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[EanCode]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[Name]"
+                      cachedDataType="nText"
+                      cachedName="Name"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[ProductID]"
+                      cachedDataType="nText"
+                      cachedName="ProductID"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[ProductID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]"
+                      name="CategoryID_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[CategoryID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[EanCode_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="13"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[EanCode_WSTR]"
+                      name="EanCode_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[EanCode]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]"
+                      name="Name_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ProductID_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="24"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[ProductID_WSTR]"
+                      name="ProductID_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[ProductID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Wpisywanie produktów do ODS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.141.10.140.ABD_GR01_ODS.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.141.10.140.ABD_GR01_ODS.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[EanCode_STR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="EanCode_STR"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[EanCode]"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[EanCode_STR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[CategoryID_STR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="CategoryID_STR"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CategoryID_STR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[ProductID_STR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="ProductID_STR"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[ProductID_STR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[Name_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name_WSTR"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[EanCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="EanCode" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="24"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="200"
+                      name="Name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie produktów\Ładowanie produktów"
+              componentClassID="Microsoft.SSISODBCSrc"
+              contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="ODBC Source"
+              name="Ładowanie produktów"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">product</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM product</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie produktów\Ładowanie produktów.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[deyanix.eu32]"
+                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu32]"
+                  description="The ODBC runtime connection used to access the database."
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[CategoryID]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[categoryId]"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[CategoryID]"
+                      name="CategoryID" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[EanCode]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[eanCode]"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[EanCode]"
+                      name="EanCode" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[Name]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[ProductID]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].Columns[ProductID]"
+                      name="ProductID" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[_id]"
+                      dataType="nText"
+                      name="_id" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[cableCategory]"
+                      dataType="nText"
+                      name="cableCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[categoryId]"
+                      dataType="nText"
+                      name="categoryId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[connectorType]"
+                      dataType="nText"
+                      name="connectorType" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[diameter]"
+                      dataType="i8"
+                      name="diameter" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[diameterUnit]"
+                      dataType="nText"
+                      name="diameterUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[eanCode]"
+                      dataType="nText"
+                      name="eanCode" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[gain]"
+                      dataType="i8"
+                      name="gain" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[gainUnit]"
+                      dataType="nText"
+                      name="gainUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[impedance]"
+                      dataType="i8"
+                      name="impedance" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[impedanceUnit]"
+                      dataType="nText"
+                      name="impedanceUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[length]"
+                      dataType="i8"
+                      name="length" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[lengthUnit]"
+                      dataType="nText"
+                      name="lengthUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[manufacturer]"
+                      dataType="nText"
+                      name="manufacturer" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[material]"
+                      dataType="nText"
+                      name="material" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[mountType]"
+                      dataType="nText"
+                      name="mountType" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      dataType="nText"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[numberOfPairs]"
+                      dataType="i8"
+                      name="numberOfPairs" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[overallBraidScreen]"
+                      dataType="i1"
+                      name="overallBraidScreen" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[overallFoilScreen]"
+                      dataType="i1"
+                      name="overallFoilScreen" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[pairBraidScreen]"
+                      dataType="i1"
+                      name="pairBraidScreen" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[pairFoilScreen]"
+                      dataType="i1"
+                      name="pairFoilScreen" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[polarization]"
+                      dataType="nText"
+                      name="polarization" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[price]"
+                      dataType="r8"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[weight]"
+                      dataType="i8"
+                      name="weight" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[weightUnit]"
+                      dataType="nText"
+                      name="weightUnit" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[wifi.bandwidth]"
+                      dataType="i8"
+                      name="wifi.bandwidth" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output].ExternalColumns[wifi.bandwidthUnit]"
+                      dataType="nText"
+                      name="wifi.bandwidthUnit" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[categoryId]"
+                      dataType="nText"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[categoryId]"
+                      name="categoryId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[eanCode]"
+                      dataType="nText"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[eanCode]"
+                      name="eanCode" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[name]"
+                      dataType="nText"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[_id]"
+                      dataType="nText"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Error Output].Columns[_id]"
+                      name="_id" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Przetwarzanie produktów.Paths[Data Conversion Output]"
+              endId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
+              name="Data Conversion Output"
+              startId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Przetwarzanie produktów.Paths[Data Conversion Output1]"
+              endId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Przetwarzanie produktów.Paths[ODBC Source Output]"
+              endId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input]"
+              name="ODBC Source Output"
+              startId="Package\Przetwarzanie produktów\Ładowanie produktów.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Uzupełnienie pełnej nazwy kategorii"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BF994F2E-454A-4C3A-AEAA-E3A7FA49C251}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Uzupełnienie pełnej nazwy kategorii"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}"
+          SQLTask:SqlStatementSource="DECLARE @CategoryID VARCHAR(24);&#xA;&#xA;DECLARE CategoryCursor CURSOR FOR&#xA;  SELECT CategoryID&#xA;  FROM Category;&#xA;&#xA;OPEN CategoryCursor;&#xA;FETCH NEXT FROM CategoryCursor INTO @CategoryID;&#xA;&#xA;WHILE @@FETCH_STATUS = 0&#xA;BEGIN&#xA;    DECLARE @FullName NVARCHAR(200);&#xA;&#xA;    WITH CategoryPath AS (&#xA;        SELECT CategoryID, name, parentId&#xA;        FROM Category C2&#xA;        WHERE CategoryID = @CategoryID&#xA;        UNION ALL&#xA;        SELECT C3.CategoryID, C3.name, C3.parentId&#xA;        FROM Category C3&#xA;        JOIN CategoryPath cp ON C3.CategoryID = cp.parentId&#xA;    )&#xA;    SELECT @FullName = STUFF((&#xA;        SELECT ' / ' + name&#xA;        FROM CategoryPath&#xA;        FOR XML PATH('')), 1, 3, '');&#xA;&#xA;    UPDATE Category&#xA;    SET FullName = @FullName&#xA;    WHERE CategoryID = @CategoryID;&#xA;&#xA;    FETCH NEXT FROM CategoryCursor INTO @CategoryID;&#xA;END;&#xA;&#xA;CLOSE CategoryCursor;&#xA;DEALLOCATE CategoryCursor;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A6D6CE1D-365F-43E6-9129-93A5631FD01E}"
+      DTS:From="Package\Przetwarzanie kategorii produktów"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Uzupełnienie pełnej nazwy kategorii" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{DF35FA3F-E17E-4EDD-A169-78A4AFF9012E}"
+      DTS:From="Package\Przetwarzanie kategorii produktów"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Przetwarzanie produktów" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="239.5,42"
+          Id="Package\Przetwarzanie kategorii produktów"
+          TopLeft="332.071428571429,155.964285439857" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Przetwarzanie produktów"
+          TopLeft="101.923076923077,303.118588476784" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Uzupełnienie pełnej nazwy kategorii"
+          TopLeft="326,302.249998498708" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="450.410714285715,197.964285439857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,104.285713058851"
+              Start="0,0"
+              End="0,96.7857130588514">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,96.7857130588514" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="413.238095238096,197.964285439857">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-212.815018315019,105.154303036928"
+              Start="0,0"
+              End="-212.815018315019,97.6543030369277">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.4804193935992" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.4804193935992"
+                    Point2="0,42.4804193935992"
+                    Point3="-4,42.4804193935992" />
+                  <mssgle:LineSegment
+                    End="-208.815018315019,42.4804193935992" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-208.815018315019,42.4804193935992"
+                    Point2="-212.815018315019,42.4804193935992"
+                    Point3="-212.815018315019,46.4804193935992" />
+                  <mssgle:LineSegment
+                    End="-212.815018315019,97.6543030369277" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Przetwarzanie kategorii produktów">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS"
+          TopLeft="613.333333333333,252" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów"
+          TopLeft="282,176" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3"
+          TopLeft="252.666666666667,62" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów"
+          TopLeft="239.333333333333,250" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie kategorii produktów.Paths[Data Conversion Output]"
+          TopLeft="363.666666666667,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie kategorii produktów.Paths[ODBC Source Output]"
+          TopLeft="363.833333333333,104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.9999999999999"
+              Start="0,0"
+              End="0,64.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie kategorii produktów.Paths[Data Conversion Output1]"
+          TopLeft="483.333333333333,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130,0"
+              Start="0,0"
+              End="122.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="122.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Przetwarzanie produktów">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Przetwarzanie produktów\Skrócenie tekstów"
+          TopLeft="187.6,199" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Przetwarzanie produktów\Ładowanie produktów"
+          TopLeft="176.4,49.8" />
+        <NodeLayout
+          Size="236.5,42"
+          Id="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów"
+          TopLeft="152.4,276.6" />
+        <NodeLayout
+          Size="226.5,42"
+          Id="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS"
+          TopLeft="509,276.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[ODBC Source Output]"
+          TopLeft="268.25,91.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,107.2"
+              Start="0,0"
+              End="0,99.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output1]"
+          TopLeft="388.9,297.55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.1,0"
+              Start="0,0"
+              End="112.6,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="112.6,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output]"
+          TopLeft="270.125,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.6000000000001"
+              Start="0,0"
+              End="0,28.1000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.1000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie produktów\Ładowanie produktów">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
