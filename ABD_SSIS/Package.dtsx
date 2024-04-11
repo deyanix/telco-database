@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{ECD77DDE-FF9E-4C5E-A37A-E2DE10D43762}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{9DAF56BD-9DCF-410E-B74F-326A269910A0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,14 +26,18 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=10.141.10.140;User ID=sa;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Auto Translate=False;Application Name=SSIS-Package-{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}10.141.10.140.ABD_GR01_ODS.sa;" />
+          DTS:ConnectionString="Data Source=10.141.10.140;User ID=sa;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}10.141.10.140.ABD_GR01_ODS.sa;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[deyanix.eu32]"
+      DTS:refId="Package.ConnectionManagers[deyanix.eu]"
       DTS:CreationName="ODBC"
       DTS:DTSID="{165045FB-4CA9-4204-83C4-6A860E08923A}"
-      DTS:ObjectName="deyanix.eu32">
+      DTS:ObjectName="deyanix.eu">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Dsn=deyanix.eu;" />
@@ -42,6 +46,23 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Czyszczenie"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="czyszczenie"
+      DTS:DTSID="{848B8DF8-F2C9-4316-9E61-D6E5265D4F43}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Czyszczenie"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}"
+          SQLTask:SqlStatementSource="DELETE FROM Category;&#xA;DELETE FROM Product;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Przetwarzanie kategorii produktów"
       DTS:CreationName="Microsoft.Pipeline"
@@ -405,6 +426,11 @@
                       dataType="str"
                       length="24"
                       name="ParentID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                      dataType="wstr"
+                      length="200"
+                      name="FullName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -452,11 +478,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
-    _id as CategoryID,
-    name as Name,
-    parentId as ParentID
-FROM category</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM category</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the number of rows fetched per batch."
@@ -502,13 +524,13 @@ FROM category</property>
                   description="The mode used to access the database."
                   expressionType="Notify"
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">1</property>
               </properties>
               <connections>
                 <connection
                   refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Connections[ODBCConnection]"
-                  connectionManagerID="Package.ConnectionManagers[deyanix.eu32]"
-                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu32]"
+                  connectionManagerID="Package.ConnectionManagers[deyanix.eu]"
+                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu]"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -1144,8 +1166,8 @@ FROM category</property>
               <connections>
                 <connection
                   refId="Package\Przetwarzanie produktów\Ładowanie produktów.Connections[ODBCConnection]"
-                  connectionManagerID="Package.ConnectionManagers[deyanix.eu32]"
-                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu32]"
+                  connectionManagerID="Package.ConnectionManagers[deyanix.eu]"
+                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu]"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -1395,6 +1417,14 @@ FROM category</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Przetwarzanie produktów" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{78CF120F-F07A-4C11-A4FC-70624F4569C0}"
+      DTS:From="Package\Czyszczenie"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Przetwarzanie kategorii produktów" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1409,43 +1439,47 @@ FROM category</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="170,42"
+          Id="Package\Czyszczenie"
+          TopLeft="344.5,47.5" />
+        <NodeLayout
           Size="240,42"
           Id="Package\Przetwarzanie kategorii produktów"
-          TopLeft="333.071428571429,156.964285439857" />
+          TopLeft="317.071428571429,133.964285439857" />
         <NodeLayout
           Size="197,42"
           Id="Package\Przetwarzanie produktów"
-          TopLeft="101.923076923077,303.118588476784" />
+          TopLeft="144.923076923077,361.118588476784" />
         <NodeLayout
-          Size="246,42"
+          Size="254,42"
           Id="Package\Uzupełnienie pełnej nazwy kategorii"
-          TopLeft="326,302.249998498708" />
+          TopLeft="520,335.249998498708" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="491.738095238096,198.964285439857">
+          TopLeft="475.738095238096,175.964285439857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-42.7380952380956,103.285713058851"
+              EndConnector="171.261904761904,159.285713058851"
               Start="0,0"
-              End="-42.7380952380956,95.785713058851">
+              End="171.261904761904,151.785713058851">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.7246920303968" />
+                    End="0,60.3472085866882" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37.7246920303968"
-                    Point2="0,41.7246920303968"
-                    Point3="-4,41.7246920303968" />
+                    Point1="0,60.3472085866882"
+                    Point2="0,64.3472085866882"
+                    Point3="4,64.3472085866882" />
                   <mssgle:LineSegment
-                    End="-38.7380952380956,41.7246920303968" />
+                    End="167.261904761904,64.3472085866882" />
                   <mssgle:CubicBezierSegment
-                    Point1="-38.7380952380956,41.7246920303968"
-                    Point2="-42.7380952380956,41.7246920303968"
-                    Point3="-42.7380952380956,45.7246920303968" />
+                    Point1="167.261904761904,64.3472085866882"
+                    Point2="171.261904761904,64.3472085866882"
+                    Point3="171.261904761904,68.3472085866882" />
                   <mssgle:LineSegment
-                    End="-42.7380952380956,95.785713058851" />
+                    End="171.261904761904,151.785713058851" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1456,30 +1490,52 @@ FROM category</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="414.404761904762,198.964285439857">
+          TopLeft="398.404761904762,175.964285439857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-213.981684981685,104.154303036927"
+              EndConnector="-154.981684981685,185.154303036927"
               Start="0,0"
-              End="-213.981684981685,96.654303036927">
+              End="-154.981684981685,177.654303036927">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.0755793725334" />
+                    End="0,70.7974336771692" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.0755793725334"
-                    Point2="0,42.0755793725334"
-                    Point3="-4,42.0755793725334" />
+                    Point1="0,70.7974336771692"
+                    Point2="0,74.7974336771692"
+                    Point3="-4,74.7974336771692" />
                   <mssgle:LineSegment
-                    End="-209.981684981685,42.0755793725334" />
+                    End="-150.981684981685,74.7974336771692" />
                   <mssgle:CubicBezierSegment
-                    Point1="-209.981684981685,42.0755793725334"
-                    Point2="-213.981684981685,42.0755793725334"
-                    Point3="-213.981684981685,46.0755793725334" />
+                    Point1="-150.981684981685,74.7974336771692"
+                    Point2="-154.981684981685,74.7974336771692"
+                    Point3="-154.981684981685,78.7974336771692" />
                   <mssgle:LineSegment
-                    End="-213.981684981685,96.654303036927" />
+                    End="-154.981684981685,177.654303036927" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="433.285714285715,89.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.464285439857"
+              Start="0,0"
+              End="0,36.964285439857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.964285439857" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1499,7 +1555,7 @@ FROM category</property>
         <NodeLayout
           Size="224,42"
           Id="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS"
-          TopLeft="613.333333333333,252" />
+          TopLeft="615.333333333333,255" />
         <NodeLayout
           Size="168,42"
           Id="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów"
@@ -1507,7 +1563,7 @@ FROM category</property>
         <NodeLayout
           Size="218,42"
           Id="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3"
-          TopLeft="252.666666666667,62" />
+          TopLeft="255.666666666667,66" />
         <NodeLayout
           Size="244,42"
           Id="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów"
@@ -1536,18 +1592,18 @@ FROM category</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie kategorii produktów.Paths[ODBC Source Output]"
-          TopLeft="363.833333333333,104">
+          TopLeft="365.333333333333,108">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.9999999999999"
+              EndConnector="0,68"
               Start="0,0"
-              End="0,64.4999999999999">
+              End="0,60.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,64.4999999999999" />
+                    End="0,60.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1558,18 +1614,18 @@ FROM category</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie kategorii produktów.Paths[Data Conversion Output1]"
-          TopLeft="483.333333333333,272">
+          TopLeft="483.333333333333,273.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="130,0"
+              EndConnector="132,0"
               Start="0,0"
-              End="122.5,0">
+              End="124.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="122.5,0" />
+                    End="124.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1615,33 +1671,33 @@ FROM category</property>
         <NodeLayout
           Size="164,42"
           Id="Package\Przetwarzanie produktów\Skrócenie tekstów"
-          TopLeft="187.6,199" />
+          TopLeft="189.6,202" />
         <NodeLayout
           Size="181,42"
           Id="Package\Przetwarzanie produktów\Ładowanie produktów"
-          TopLeft="176.4,49.8" />
+          TopLeft="176.4,51.8" />
         <NodeLayout
-          Size="236.5,42"
+          Size="236,42"
           Id="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów"
           TopLeft="152.4,276.6" />
         <NodeLayout
-          Size="226.5,42"
+          Size="226,42"
           Id="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS"
-          TopLeft="509,276.5" />
+          TopLeft="511,279.5" />
         <EdgeLayout
           Id="Package\Przetwarzanie produktów.Paths[ODBC Source Output]"
-          TopLeft="268.25,91.8">
+          TopLeft="269.25,93.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,107.2"
+              EndConnector="0,108.2"
               Start="0,0"
-              End="0,99.7">
+              End="0,100.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,99.7" />
+                    End="0,100.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1652,18 +1708,18 @@ FROM category</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output1]"
-          TopLeft="388.9,297.55">
+          TopLeft="388.4,299.05">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="120.1,0"
+              EndConnector="122.6,0"
               Start="0,0"
-              End="112.6,0">
+              End="115.1,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="112.6,0" />
+                    End="115.1,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1674,18 +1730,18 @@ FROM category</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output]"
-          TopLeft="270.125,241">
+          TopLeft="271,244">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35.6000000000001"
+              EndConnector="0,32.6"
               Start="0,0"
-              End="0,28.1000000000001">
+              End="0,25.1">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.1000000000001" />
+                    End="0,25.1" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
