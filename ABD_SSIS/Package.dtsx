@@ -11,9 +11,9 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:ProtectionLevel="0"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{9DAF56BD-9DCF-410E-B74F-326A269910A0}">
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{19B11C05-C82F-4467-985C-FDA6C35692BE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,9 +27,16 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=10.141.10.140;User ID=sa;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}10.141.10.140.ABD_GR01_ODS.sa;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="K80LB75VNuU="
+            IV="1FoyatxHHtBc/fFvgp42qw==" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+            <CipherData>
+              <CipherValue>1FoyatxHHtBc/fFvgp42q7gST2xqH0EOrmV8csjqJA971bNd67Yyiqs10yxMymol41yiBnX29FlRAQSS2Ch6+iT3AI7uSlDIkMYC5HrYlzBaWsElOqr0yj0TYT2/RNvNQgducUodrWmJTgLFv8sDtRxrjODRE0L75ZwUvzYWtHcgm9Uxfstoztcn2KXUGQJq</CipherValue>
+            </CipherData>
+          </EncryptedData>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>

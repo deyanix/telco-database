@@ -12,7 +12,7 @@
   <DataSourceViews />
   <DeploymentModelSpecificContent>
     <Manifest>
-      <SSIS:Project SSIS:ProtectionLevel="DontSaveSensitive" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
+      <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithPassword" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
           <SSIS:Property SSIS:Name="ID">{3acaf89e-40cf-454d-ace3-5a9af36c6b94}</SSIS:Property>
           <SSIS:Property SSIS:Name="Name">ABD_SSIS</SSIS:Property>
@@ -26,6 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">GLADOS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="DGPabCjdS1o=" SSIS:IV="WVWWCvPoHjwXau9sTm7XVw==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">KRGPezOk2XWhWu9QOULf+fNYUnatkiW4CAk8DxyGLGoG5Y/dK7+4co5KDb0WofELa8Uk9RiQFG0vjGHVG4IP7sAnANUyJqQrOD3COOpTrGW87VfgWPy4rviPXtkj04RIDNB9iH07MHAfEoEUVuFa1AVQ4yY70V6n9C+n57umIa9aQqJf+Nrqgva9orqEgSkD</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -41,14 +42,14 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">41</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">43</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9DAF56BD-9DCF-410E-B74F-326A269910A0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{19B11C05-C82F-4467-985C-FDA6C35692BE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters>
                 <SSIS:Parameter SSIS:Name="CM.10.141.10.140.ABD_GR01_ODS.sa.ConnectByProxy">
