@@ -12,8 +12,8 @@
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{6B86D96C-D94B-4D78-9D00-4B52A5BD9A7D}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{21DEB6FE-0CA9-4FC8-AA69-83E592DA681E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -49,6 +49,245 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Dostosowanie kodowania tekstów"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[Email]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Email"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Email]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Email_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Email_WSTR]"
+                      name="Email_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Email]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie danych o klientów\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Client]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Client]) [refTable]
+where [refTable].[Email] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Surname" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Email" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PhoneNumber" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegistrationDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Email_WSTR]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie danych o klientów\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{C4750D07-AC01-42CF-B127-CFDD7DBF3B84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_SRC2]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o klientów\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Lookup.Inputs[Lookup Input].Columns[Email_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Email_WSTR"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Email_WSTR]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Email</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Match Output].Columns[RegistrationDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="10"
+                      lineageId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Match Output].Columns[RegistrationDate]"
+                      name="RegistrationDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">RegistrationDate</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS"
               componentClassID="Microsoft.OLEDBDestination"
@@ -185,6 +424,13 @@
                       cachedName="Country"
                       externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[RegistrationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="RegistrationDate"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Match Output].Columns[RegistrationDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -203,7 +449,8 @@
                       name="AddressSourceID" />
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="10"
                       name="RegistrationDate" />
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
@@ -337,6 +584,7 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
               <outputs>
                 <output
                   refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output]"
+                  isSorted="true"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
@@ -404,9 +652,10 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].ExternalColumns[Email]"
-                      length="30"
+                      length="50"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Email]"
                       name="Email"
+                      sortKeyPosition="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
@@ -415,9 +664,10 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
-                      length="16"
+                      length="50"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
                       name="PhoneNumber"
+                      sortKeyPosition="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]"
@@ -736,6 +986,7 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
               <outputs>
                 <output
                   refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output]"
+                  isSorted="true"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
@@ -758,25 +1009,25 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].Columns[Email]"
-                      codePage="1250"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].ExternalColumns[Email]"
-                      length="30"
+                      length="50"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].Columns[Email]"
                       name="Email"
+                      sortKeyPosition="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
-                      codePage="1250"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
-                      length="16"
+                      length="50"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
                       name="PhoneNumber"
+                      sortKeyPosition="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02.Outputs[OLE DB Source Output].Columns[Name]"
@@ -911,8 +1162,18 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
           </components>
           <paths>
             <path
-              refId="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
+              refId="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
+              endId="Package\Przetwarzanie danych o klientów\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
               endId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Przetwarzanie danych o klientów\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
+              endId="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output]" />
           </paths>
@@ -979,51 +1240,129 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
     design-time-name="Package\Przetwarzanie danych o klientów">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="249,42"
           Id="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS"
-          TopLeft="429,258" />
+          TopLeft="307.958338143097,271.65000010848" />
         <NodeLayout
           Size="298,42"
           Id="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC02"
-          TopLeft="433.333316114214,66.0833338585165" />
+          TopLeft="426.249983062347,7.1500000568231" />
         <NodeLayout
           Size="298,42"
           Id="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01"
-          TopLeft="117.916667146815,62.1500001601378" />
+          TopLeft="123.958333573408,6.6833330526617" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
+          TopLeft="161.666660242611,97.0666674380832" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
-          TopLeft="266.916667146815,104.150000160138">
+          TopLeft="272.958333573408,48.6833330526617">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="286.583332853185,153.849999839862"
+              EndConnector="25.7083266692031,48.3833343854215"
               Start="0,0"
-              End="286.583332853185,146.349999839862">
+              End="25.7083266692031,40.8833343854215">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,72.9249999199311" />
+                    End="0,20.1916671927108" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,72.9249999199311"
-                    Point2="0,76.9249999199311"
-                    Point3="4,76.9249999199311" />
+                    Point1="0,20.1916671927108"
+                    Point2="0,24.1916671927108"
+                    Point3="4,24.1916671927108" />
                   <mssgle:LineSegment
-                    End="282.583332853185,76.9249999199311" />
+                    End="21.7083266692031,24.1916671927108" />
                   <mssgle:CubicBezierSegment
-                    Point1="282.583332853185,76.9249999199311"
-                    Point2="286.583332853185,76.9249999199311"
-                    Point3="286.583332853185,80.9249999199311" />
+                    Point1="21.7083266692031,24.1916671927108"
+                    Point2="25.7083266692031,24.1916671927108"
+                    Point3="25.7083266692031,28.1916671927108" />
                   <mssgle:LineSegment
-                    End="286.583332853185,146.349999839862" />
+                    End="25.7083266692031,40.8833343854215" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Przetwarzanie danych o klientów\Lookup"
+          TopLeft="412.499983608723,170.7333346902" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
+          TopLeft="298.666660242611,139.066667438083">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="174.833323366112,31.6666672521168"
+              Start="0,0"
+              End="174.833323366112,24.1666672521168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.8333336260584" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.8333336260584"
+                    Point2="0,15.8333336260584"
+                    Point3="4,15.8333336260584" />
+                  <mssgle:LineSegment
+                    End="170.833323366112,15.8333336260584" />
+                  <mssgle:CubicBezierSegment
+                    Point1="170.833323366112,15.8333336260584"
+                    Point2="174.833323366112,15.8333336260584"
+                    Point3="174.833323366112,19.8333336260584" />
+                  <mssgle:LineSegment
+                    End="174.833323366112,24.1666672521168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
+          TopLeft="473.499983608723,212.7333346902">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-41.0416454656266,58.9166654182804"
+              Start="0,0"
+              End="-41.0416454656266,51.4166654182804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4583327091402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.4583327091402"
+                    Point2="0,29.4583327091402"
+                    Point3="-4,29.4583327091402" />
+                  <mssgle:LineSegment
+                    End="-37.0416454656266,29.4583327091402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-37.0416454656266,29.4583327091402"
+                    Point2="-41.0416454656266,29.4583327091402"
+                    Point3="-41.0416454656266,33.4583327091402" />
+                  <mssgle:LineSegment
+                    End="-41.0416454656266,51.4166654182804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-77.5808617953133,34.4583327091402,114.120078125,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1052,6 +1391,29 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o klientów\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Client]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
