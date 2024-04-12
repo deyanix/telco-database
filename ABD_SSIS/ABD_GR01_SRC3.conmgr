@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ABD_GR01_SRC3"
+  DTS:DTSID="{165045FB-4CA9-4204-83C4-6A860E08923A}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Dsn=deyanix.eu;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

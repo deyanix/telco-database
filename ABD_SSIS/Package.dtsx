@@ -12,114 +12,10 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{61D8349B-A581-4022-B5C2-6C8860274CBF}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{722F7835-7C1D-4556-94C8-182806DCCC17}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[10.141.10.140.ABD_GR01_ODS.sa]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}"
-      DTS:ObjectName="10.141.10.140.ABD_GR01_ODS.sa">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=10.141.10.140;User ID=sa;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{A6839ED7-CBE9-4AAA-A57A-AE6E4B46502F}10.141.10.140.ABD_GR01_ODS.sa;">
-          <EncryptedData
-            Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="X0/fq9sAY/M="
-            IV="lumcm5umtvz69cpUpfLoXg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
-            <EncryptionMethod
-              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
-            <CipherData>
-              <CipherValue>lumcm5umtvz69cpUpfLoXpiBcIkFnFj5HAshMOaWLkYNyFZWc9hDBRgc3aAArD7BCy6ijXk1TOc3gGqmsTQwP3Iy9xItVu1vwIsvK6s5e+FuM469f1WkbkIV/OsViB/XWt1mK8C3SsqxxVvQ1CmzAk/TCZWlcKvfLSOpv/9KZif4WFhhrVOvlYYadloVl/p8</CipherValue>
-            </CipherData>
-          </EncryptedData>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}"
-      DTS:ObjectName="194.29.170.4.ABD_GR01_ODS.abdgr01">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=194.29.170.4;User ID=abdgr01;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}194.29.170.4.ABD_GR01_ODS.abdgr01;">
-          <EncryptedData
-            Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="iPfFkLkqiD8="
-            IV="B07Dk0U+nws1UQfeBs0Uyg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
-            <EncryptionMethod
-              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
-            <CipherData>
-              <CipherValue>B07Dk0U+nws1UQfeBs0UykB6v8IOPb99uw6mBzBed0XX4o8KNC/9PL7Lc/Qsmy991VOplynwRz4wWkxfSvn8cwOw3ovnuaabf39pq1XPDYxiy+4FUeszx/LhlAaBlujcaCVxhkrC00f9jVPmMlnZCaEceRBvB3JFvTH7PsbFSpletbmULqrjEzT8h3rUo1OF</CipherValue>
-            </CipherData>
-          </EncryptedData>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01 1]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{0998E8D6-12E3-4DF3-A2E4-D7496141B7AE}"
-      DTS:ObjectName="194.29.170.4.ABD_GR01_ODS.abdgr01 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=194.29.170.4;User ID=abdgr01;Initial Catalog=ABD_GR01_ODS;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;">
-          <EncryptedData
-            Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="3fwoZ/ZmUoU="
-            IV="3DvYZ73sXcwhxUpYsYkchA==" xmlns="http://www.w3.org/2001/04/xmlenc#">
-            <EncryptionMethod
-              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
-            <CipherData>
-              <CipherValue>3DvYZ73sXcwhxUpYsYkchOFjVjxUTyMbL42pSQlh8U4HUxtSlAJrKAIRO9TVO53eBIgMU4/eshNZgW8Q3yr2tz0yLZM7ow4a5mgOrqH1596GxBkIlM2ZbcxnUNhsM7ZWoSFwY21Ds1nbAfOaHRdg4QhmItw2MsGuimBy46Ccc+zqDUe1WozeZty/H651Q9nZ</CipherValue>
-            </CipherData>
-          </EncryptedData>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_SRC2.abdgr01]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{C4750D07-AC01-42CF-B127-CFDD7DBF3B84}"
-      DTS:ObjectName="194.29.170.4.ABD_GR01_SRC2.abdgr01">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=194.29.170.4;User ID=abdgr01;Initial Catalog=ABD_GR01_SRC2;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;">
-          <EncryptedData
-            Type="http://www.w3.org/2001/04/xmlenc#Element"
-            Salt="hHW5M6ymKXE="
-            IV="DnH7YZGsB6MxiyFRLUkSBg==" xmlns="http://www.w3.org/2001/04/xmlenc#">
-            <EncryptionMethod
-              Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
-            <CipherData>
-              <CipherValue>DnH7YZGsB6MxiyFRLUkSBrWOBDrRgrieCsCjH0jXIfWgQ7TEQT1w6Q2/ESE/cNKvIsSG/ROi4llIBnCtYsvI8YAYEVAP0DH2F8QQLC2gku+LzgVX3GSZq+x/d0pjlRMeCqTP2VoDF2vDZq5aUotQ7xQaG+e24NSMAJuBj19K6BavoZVXyA/M8Fciz0XY6KYz</CipherValue>
-            </CipherData>
-          </EncryptedData>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[deyanix.eu]"
-      DTS:CreationName="ODBC"
-      DTS:DTSID="{165045FB-4CA9-4204-83C4-6A860E08923A}"
-      DTS:ObjectName="deyanix.eu">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Dsn=deyanix.eu;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -131,7 +27,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Czyszczenie"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -148,12 +44,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Czyszczenie - karty"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}"
-          SQLTask:SqlStatementSource="DELETE FROM DimCategorySt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM DimCardSt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -412,8 +308,8 @@
               <connections>
                 <connection
                   refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
-                  connectionManagerRefId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -438,20 +334,20 @@
                       externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardSrcID]"
                       lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardId]" />
                     <inputColumn
-                      refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].Columns[CardCode_STR]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="12"
-                      cachedName="CardCode_STR"
-                      externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardCode]"
-                      lineageId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CardCode_STR]" />
-                    <inputColumn
                       refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].Columns[CardTypeName_WSTR]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="CardTypeName_WSTR"
                       externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeName]"
                       lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardTypeName_WSTR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].Columns[CardCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CardCode"
+                      externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardCode]"
+                      lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardCode]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -555,8 +451,8 @@ FROM         Card INNER JOIN
               <connections>
                 <connection
                   refId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[194.29.170.4.ABD_GR01_SRC2.abdgr01]"
-                  connectionManagerRefId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_SRC2.abdgr01]"
+                  connectionManagerID="{C4750D07-AC01-42CF-B127-CFDD7DBF3B84}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_SRC2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -803,7 +699,8 @@ FROM         Card INNER JOIN
                   <inputColumns>
                     <inputColumn
                       refId="Package\Przetwarzanie kategorii produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[CategoryID_WSTR]"
-                      cachedDataType="wstr"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
                       cachedLength="24"
                       cachedName="CategoryID_WSTR"
                       lineageId="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CategoryID_WSTR]" />
@@ -1082,8 +979,8 @@ FROM         Card INNER JOIN
               <connections>
                 <connection
                   refId="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
-                  connectionManagerRefId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1241,8 +1138,8 @@ FROM         Card INNER JOIN
               <connections>
                 <connection
                   refId="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3.Connections[ODBCConnection]"
-                  connectionManagerID="Package.ConnectionManagers[deyanix.eu]"
-                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu]"
+                  connectionManagerID="{165045FB-4CA9-4204-83C4-6A860E08923A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_SRC3]"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -1710,8 +1607,8 @@ FROM         Card INNER JOIN
               <connections>
                 <connection
                   refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
-                  connectionManagerRefId="Package.ConnectionManagers[194.29.170.4.ABD_GR01_ODS.abdgr01]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1907,8 +1804,8 @@ FROM         Card INNER JOIN
               <connections>
                 <connection
                   refId="Package\Przetwarzanie produktów\Ładowanie produktów.Connections[ODBCConnection]"
-                  connectionManagerID="Package.ConnectionManagers[deyanix.eu]"
-                  connectionManagerRefId="Package.ConnectionManagers[deyanix.eu]"
+                  connectionManagerID="{165045FB-4CA9-4204-83C4-6A860E08923A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_SRC3]"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -2143,7 +2040,7 @@ FROM         Card INNER JOIN
       DTS:LocaleID="-1"
       DTS:ObjectName="Uzupełnienie pełnej nazwy kategorii"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2202,6 +2099,14 @@ FROM         Card INNER JOIN
           Size="170,42"
           Id="Package\Czyszczenie"
           TopLeft="350.452380715854,47.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Czyszczenie - karty"
+          TopLeft="797.619015924515,44.8809527376341" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Przetwarzanie kart"
+          TopLeft="815.922586625768,123.035715263514" />
         <NodeLayout
           Size="240,42"
           Id="Package\Przetwarzanie kategorii produktów"
@@ -2304,14 +2209,6 @@ FROM         Card INNER JOIN
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="220,42"
-          Id="Package\Czyszczenie - karty"
-          TopLeft="797.619015924515,44.8809527376341" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Przetwarzanie kart"
-          TopLeft="815.922586625768,123.035715263514" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="908.520801275142,86.8809527376341">
@@ -2338,6 +2235,122 @@ FROM         Card INNER JOIN
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Przetwarzanie kart">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Przetwarzanie kart\Ładowanie danych o kartach"
+          TopLeft="130,42" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Przetwarzanie kart\Skrócenie tekstów"
+          TopLeft="159,126" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Przetwarzanie kart\Wpisywanie kart do ODS"
+          TopLeft="429,258" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów"
+          TopLeft="132,260" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie kart.Paths[Data Conversion Output]"
+          TopLeft="252.5,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie kart.Paths[OLE DB Source Output]"
+          TopLeft="251.5,84">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie kart.Paths[Data Conversion Output1]"
+          TopLeft="376,280">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53,0"
+              Start="0,0"
+              End="45.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie kart\Ładowanie danych o kartach">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie kart\Wpisywanie kart do ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Przetwarzanie kategorii produktów">
     <LayoutInfo>
       <GraphLayout
@@ -2349,7 +2362,7 @@ FROM         Card INNER JOIN
         <NodeLayout
           Size="218,42"
           Id="Package\Przetwarzanie kategorii produktów\Ładowanie kategorii z SRC3"
-          TopLeft="249.00000026491,67.7333333471086" />
+          TopLeft="245.666666931577,60.9625000474064" />
         <NodeLayout
           Size="168,42"
           Id="Package\Przetwarzanie kategorii produktów\Skrócenie tekstów"
@@ -2360,18 +2373,30 @@ FROM         Card INNER JOIN
           TopLeft="236.833333432674,244.799999958674" />
         <EdgeLayout
           Id="Package\Przetwarzanie kategorii produktów.Paths[ODBC Source Output]"
-          TopLeft="361.166666832235,109.733333347109">
+          TopLeft="354.666666931577,102.962500047406">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42.8666664669249"
+              EndConnector="9.66666646798438,49.6374997666266"
               Start="0,0"
-              End="0,35.3666664669249">
+              End="9.66666646798438,42.1374997666266">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.3666664669249" />
+                    End="0,20.8187498833133" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8187498833133"
+                    Point2="0,24.8187498833133"
+                    Point3="4,24.8187498833133" />
+                  <mssgle:LineSegment
+                    End="5.66666646798438,24.8187498833133" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.66666646798438,24.8187498833133"
+                    Point2="9.66666646798438,24.8187498833133"
+                    Point3="9.66666646798438,28.8187498833133" />
+                  <mssgle:LineSegment
+                    End="9.66666646798438,42.1374997666266" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2558,122 +2583,6 @@ FROM         Card INNER JOIN
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Przetwarzanie kart">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="244,42"
-          Id="Package\Przetwarzanie kart\Ładowanie danych o kartach"
-          TopLeft="130,42" />
-        <NodeLayout
-          Size="184,42"
-          Id="Package\Przetwarzanie kart\Skrócenie tekstów"
-          TopLeft="159,126" />
-        <EdgeLayout
-          Id="Package\Przetwarzanie kart.Paths[OLE DB Source Output]"
-          TopLeft="251.5,84">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="244,42"
-          Id="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów"
-          TopLeft="132,260" />
-        <EdgeLayout
-          Id="Package\Przetwarzanie kart.Paths[Data Conversion Output]"
-          TopLeft="252.5,168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,92"
-              Start="0,0"
-              End="0,84.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,84.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="223,42"
-          Id="Package\Przetwarzanie kart\Wpisywanie kart do ODS"
-          TopLeft="429,258" />
-        <EdgeLayout
-          Id="Package\Przetwarzanie kart.Paths[Data Conversion Output1]"
-          TopLeft="376,280">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="53,0"
-              Start="0,0"
-              End="45.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="45.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie kart\Ładowanie danych o kartach">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie kart\Wpisywanie kart do ODS">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
