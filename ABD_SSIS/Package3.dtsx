@@ -12,8 +12,8 @@
   DTS:ObjectName="Package3"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{AB2B7915-9E5A-4A8C-A53A-0F5C170899C8}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{FFC51D6B-C152-4F34-AC07-B9A3C96A78B1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -49,6 +49,84 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Dostosowanie kodowania tekstów"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[Name]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Name"
+                      lineageId="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01.Outputs[OLE DB Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]"
+                      name="Name_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01.Outputs[OLE DB Source Output].Columns[Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS"
               componentClassID="Microsoft.OLEDBDestination"
@@ -172,6 +250,19 @@
                       cachedName="Country"
                       externalMetadataColumnId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       lineageId="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01.Outputs[OLE DB Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[DistributorID]"
+                      cachedDataType="i4"
+                      cachedName="DistributorID"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[DistributorSourceID]"
+                      lineageId="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01.Outputs[OLE DB Source Output].Columns[DistributorID]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[Name_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Name_WSTR"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Name_WSTR]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -614,8 +705,13 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
           </components>
           <paths>
             <path
-              refId="Package\Przetwarzanie danych o dystrybutorach.Paths[OLE DB Source Output]"
+              refId="Package\Przetwarzanie danych o dystrybutorach.Paths[Data Conversion Output]"
               endId="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Przetwarzanie danych o dystrybutorach.Paths[OLE DB Source Output]"
+              endId="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01.Outputs[OLE DB Source Output]" />
           </paths>
@@ -682,7 +778,7 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
     design-time-name="Package\Przetwarzanie danych o dystrybutorach">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="302,42"
           Id="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01"
@@ -690,21 +786,47 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
         <NodeLayout
           Size="223,42"
           Id="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS"
-          TopLeft="155.81548100024,205.935714394194" />
+          TopLeft="159.386909571668,253.792857251337" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów"
+          TopLeft="149.285714285714,121.428571428571" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o dystrybutorach.Paths[OLE DB Source Output]"
-          TopLeft="271.136907286824,48.6833330526617">
+          TopLeft="273.122023929561,48.6833330526617">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,157.252381341533"
+              EndConnector="0,72.7452383759097"
               Start="0,0"
-              End="0,149.752381341533">
+              End="0,65.2452383759097">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,149.752381341533" />
+                    End="0,65.2452383759097" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o dystrybutorach.Paths[Data Conversion Output]"
+          TopLeft="271.086311928691,163.428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.3642858227658"
+              Start="0,0"
+              End="0,82.8642858227658">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.8642858227658" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -12,8 +12,8 @@
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{4DA687EC-0CEB-4359-8038-128B393F5F22}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{21BD709B-AAB3-4DA6-911D-7BBB88116EB3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1258,23 +1258,35 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
           Id="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS"
           TopLeft="307.958338143097,271.65000010848" />
         <NodeLayout
-          Size="274,42"
+          Size="244,42"
           Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
           TopLeft="139.83332773712,97.4333341116375" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
-          TopLeft="274.895830655264,48.6833330526617">
+          TopLeft="272.958333573408,48.6833330526617">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,48.7500010589758"
+              EndConnector="-11.125005836288,48.7500010589758"
               Start="0,0"
-              End="0,41.2500010589758">
+              End="-11.125005836288,41.2500010589758">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.2500010589758" />
+                    End="0,20.3750005294879" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3750005294879"
+                    Point2="0,24.3750005294879"
+                    Point3="-4,24.3750005294879" />
+                  <mssgle:LineSegment
+                    End="-7.12500583628804,24.3750005294879" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.12500583628804,24.3750005294879"
+                    Point2="-11.125005836288,24.3750005294879"
+                    Point3="-11.125005836288,28.3750005294879" />
+                  <mssgle:LineSegment
+                    End="-11.125005836288,41.2500010589758" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1309,13 +1321,13 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
-          TopLeft="276.83332773712,139.433334111638">
+          TopLeft="261.83332773712,139.433334111638">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="154.999990860621,38.2333339669975"
+              EndConnector="169.999990860621,38.2333339669975"
               Start="0,0"
-              End="154.999990860621,30.7333339669975">
+              End="169.999990860621,30.7333339669975">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1326,13 +1338,13 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
                     Point2="0,19.1166669834987"
                     Point3="4,19.1166669834987" />
                   <mssgle:LineSegment
-                    End="150.999990860621,19.1166669834987" />
+                    End="165.999990860621,19.1166669834987" />
                   <mssgle:CubicBezierSegment
-                    Point1="150.999990860621,19.1166669834987"
-                    Point2="154.999990860621,19.1166669834987"
-                    Point3="154.999990860621,23.1166669834987" />
+                    Point1="165.999990860621,19.1166669834987"
+                    Point2="169.999990860621,19.1166669834987"
+                    Point3="169.999990860621,23.1166669834987" />
                   <mssgle:LineSegment
-                    End="154.999990860621,30.7333339669975" />
+                    End="169.999990860621,30.7333339669975" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
