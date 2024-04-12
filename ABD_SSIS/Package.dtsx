@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="89"
-  DTS:VersionGUID="{722F7835-7C1D-4556-94C8-182806DCCC17}">
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{A57ED89C-743B-495B-B57C-02071B9DA097}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -27,7 +27,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Czyszczenie"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -44,7 +44,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Czyszczenie - karty"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -66,189 +66,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Dostosowanie kodowania tekstów"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[CardCode_WSTR]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="CardCode_WSTR"
-                      lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardCode_WSTR]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CardCode_STR]"
-                      codePage="1250"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="12"
-                      lineageId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[CardCode_STR]"
-                      name="CardCode_STR"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardCode_WSTR]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Przetwarzanie kart\Skrócenie tekstów"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Skrócenie tekstów"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Przetwarzanie kart\Skrócenie tekstów.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Przetwarzanie kart\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[CardCode]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="12"
-                      cachedName="CardCode"
-                      lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardCode]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie kart\Skrócenie tekstów.Inputs[Data Conversion Input].Columns[CardTypeName]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="CardTypeName"
-                      lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardTypeName]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Przetwarzanie kart\Skrócenie tekstów.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardCode_WSTR]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="12"
-                      lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardCode_WSTR]"
-                      name="CardCode_WSTR"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardCode]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardTypeName_WSTR]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardTypeName_WSTR]"
-                      name="CardTypeName_WSTR"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardTypeName]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Przetwarzanie kart\Skrócenie tekstów.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS"
               componentClassID="Microsoft.OLEDBDestination"
@@ -334,13 +151,6 @@
                       externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardSrcID]"
                       lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardId]" />
                     <inputColumn
-                      refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].Columns[CardTypeName_WSTR]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="CardTypeName_WSTR"
-                      externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeName]"
-                      lineageId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[CardTypeName_WSTR]" />
-                    <inputColumn
                       refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].Columns[CardCode]"
                       cachedCodepage="1250"
                       cachedDataType="str"
@@ -348,6 +158,13 @@
                       cachedName="CardCode"
                       externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardCode]"
                       lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardCode]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].Columns[CardTypeName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CardTypeName"
+                      externalMetadataColumnId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CardTypeName]"
+                      lineageId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output].Columns[CardTypeName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -653,18 +470,8 @@ FROM         Card INNER JOIN
           </components>
           <paths>
             <path
-              refId="Package\Przetwarzanie kart.Paths[Data Conversion Output]"
-              endId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
-              name="Data Conversion Output"
-              startId="Package\Przetwarzanie kart\Skrócenie tekstów.Outputs[Data Conversion Output]" />
-            <path
-              refId="Package\Przetwarzanie kart.Paths[Data Conversion Output1]"
-              endId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input]"
-              name="Data Conversion Output"
-              startId="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\Przetwarzanie kart.Paths[OLE DB Source Output]"
-              endId="Package\Przetwarzanie kart\Skrócenie tekstów.Inputs[Data Conversion Input]"
+              endId="Package\Przetwarzanie kart\Wpisywanie kart do ODS.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Przetwarzanie kart\Ładowanie danych o kartach.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2040,7 +1847,7 @@ FROM         Card INNER JOIN
       DTS:LocaleID="-1"
       DTS:ObjectName="Uzupełnienie pełnej nazwy kategorii"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2238,81 +2045,41 @@ FROM         Card INNER JOIN
     design-time-name="Package\Przetwarzanie kart">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="244,42"
           Id="Package\Przetwarzanie kart\Ładowanie danych o kartach"
           TopLeft="130,42" />
         <NodeLayout
-          Size="184,42"
-          Id="Package\Przetwarzanie kart\Skrócenie tekstów"
-          TopLeft="159,126" />
-        <NodeLayout
           Size="223,42"
           Id="Package\Przetwarzanie kart\Wpisywanie kart do ODS"
           TopLeft="429,258" />
-        <NodeLayout
-          Size="244,42"
-          Id="Package\Przetwarzanie kart\Dostosowanie kodowania tekstów"
-          TopLeft="132,260" />
-        <EdgeLayout
-          Id="Package\Przetwarzanie kart.Paths[Data Conversion Output]"
-          TopLeft="252.5,168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,92"
-              Start="0,0"
-              End="0,84.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,84.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie kart.Paths[OLE DB Source Output]"
-          TopLeft="251.5,84">
+          TopLeft="252,84">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="288.5,174"
               Start="0,0"
-              End="0,34.5">
+              End="288.5,166.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Przetwarzanie kart.Paths[Data Conversion Output1]"
-          TopLeft="376,280">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="53,0"
-              Start="0,0"
-              End="45.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="0,83" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,83"
+                    Point2="0,87"
+                    Point3="4,87" />
                   <mssgle:LineSegment
-                    End="45.5,0" />
+                    End="284.5,87" />
+                  <mssgle:CubicBezierSegment
+                    Point1="284.5,87"
+                    Point2="288.5,87"
+                    Point3="288.5,91" />
+                  <mssgle:LineSegment
+                    End="288.5,166.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2354,7 +2121,7 @@ FROM         Card INNER JOIN
     design-time-name="Package\Przetwarzanie kategorii produktów">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="224,42"
           Id="Package\Przetwarzanie kategorii produktów\Wpisywanie kategorii do ODS"
@@ -2402,7 +2169,9 @@ FROM         Card INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2424,7 +2193,9 @@ FROM         Card INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2446,7 +2217,9 @@ FROM         Card INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2482,7 +2255,7 @@ FROM         Card INNER JOIN
     design-time-name="Package\Przetwarzanie produktów">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="164,42"
           Id="Package\Przetwarzanie produktów\Skrócenie tekstów"
@@ -2518,7 +2291,9 @@ FROM         Card INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2540,7 +2315,9 @@ FROM         Card INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2562,7 +2339,9 @@ FROM         Card INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
