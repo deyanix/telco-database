@@ -12,8 +12,8 @@
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{21DEB6FE-0CA9-4FC8-AA69-83E592DA681E}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{EB070F07-D2E5-4E09-B1F3-15FA419709AE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1256,33 +1256,21 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         <NodeLayout
           Size="274,42"
           Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
-          TopLeft="161.666660242611,97.0666674380832" />
+          TopLeft="140.83332773712,97.9333341116375" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
-          TopLeft="272.958333573408,48.6833330526617">
+          TopLeft="275.395830655264,48.6833330526617">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="25.7083266692031,48.3833343854215"
+              EndConnector="0,49.2500010589758"
               Start="0,0"
-              End="25.7083266692031,40.8833343854215">
+              End="0,41.7500010589758">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1916671927108" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.1916671927108"
-                    Point2="0,24.1916671927108"
-                    Point3="4,24.1916671927108" />
-                  <mssgle:LineSegment
-                    End="21.7083266692031,24.1916671927108" />
-                  <mssgle:CubicBezierSegment
-                    Point1="21.7083266692031,24.1916671927108"
-                    Point2="25.7083266692031,24.1916671927108"
-                    Point3="25.7083266692031,28.1916671927108" />
-                  <mssgle:LineSegment
-                    End="25.7083266692031,40.8833343854215" />
+                    End="0,41.7500010589758" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1294,33 +1282,33 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         <NodeLayout
           Size="122,42"
           Id="Package\Przetwarzanie danych o klientów\Lookup"
-          TopLeft="412.499983608723,170.7333346902" />
+          TopLeft="370.833318597741,177.666668078635" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
-          TopLeft="298.666660242611,139.066667438083">
+          TopLeft="277.83332773712,139.933334111638">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="174.833323366112,31.6666672521168"
+              EndConnector="153.999990860621,37.733333966997"
               Start="0,0"
-              End="174.833323366112,24.1666672521168">
+              End="153.999990860621,30.233333966997">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.8333336260584" />
+                    End="0,14.8666669834985" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.8333336260584"
-                    Point2="0,15.8333336260584"
-                    Point3="4,15.8333336260584" />
+                    Point1="0,14.8666669834985"
+                    Point2="0,18.8666669834985"
+                    Point3="4,18.8666669834985" />
                   <mssgle:LineSegment
-                    End="170.833323366112,15.8333336260584" />
+                    End="149.999990860621,18.8666669834985" />
                   <mssgle:CubicBezierSegment
-                    Point1="170.833323366112,15.8333336260584"
-                    Point2="174.833323366112,15.8333336260584"
-                    Point3="174.833323366112,19.8333336260584" />
+                    Point1="149.999990860621,18.8666669834985"
+                    Point2="153.999990860621,18.8666669834985"
+                    Point3="153.999990860621,22.8666669834985" />
                   <mssgle:LineSegment
-                    End="174.833323366112,24.1666672521168" />
+                    End="153.999990860621,30.233333966997" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1331,37 +1319,25 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
-          TopLeft="473.499983608723,212.7333346902">
+          TopLeft="432.145828370419,219.666668078635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-41.0416454656266,58.9166654182804"
+              EndConnector="0,51.9833320298459"
               Start="0,0"
-              End="-41.0416454656266,51.4166654182804">
+              End="0,44.4833320298459">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.4583327091402" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.4583327091402"
-                    Point2="0,29.4583327091402"
-                    Point3="-4,29.4583327091402" />
-                  <mssgle:LineSegment
-                    End="-37.0416454656266,29.4583327091402" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-37.0416454656266,29.4583327091402"
-                    Point2="-41.0416454656266,29.4583327091402"
-                    Point3="-41.0416454656266,33.4583327091402" />
-                  <mssgle:LineSegment
-                    End="-41.0416454656266,51.4166654182804" />
+                    End="0,44.4833320298459" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-77.5808617953133,34.4583327091402,114.120078125,16"
+              BoundingBox="-57.0600390625,14.241666014923,114.120078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
