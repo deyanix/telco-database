@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSFactDelivery"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{17799495-038E-402E-8C8C-7BD292E9F05B}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{E8C6E3F5-C251-4206-B820-2728087ABC94}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -152,6 +152,18 @@
                       cachedName="DistributorId"
                       externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[DistributorId]"
                       lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DistributorId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[ShopId]"
+                      cachedDataType="i4"
+                      cachedName="ShopId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ShopId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ShopId]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -176,6 +188,14 @@
                       refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[SupplyId]"
                       dataType="i4"
                       name="SupplyId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ShopId]"
+                      dataType="i4"
+                      name="ShopId" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -229,8 +249,10 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dbo.[Delivery].DeliveryId,dbo.[Delivery].Amount, dbo.[Delivery].Date, dbo.[Delivery].DistributorId,dbo.[Delivery].SupplyId
-FROM     dbo.[Delivery];</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dbo.[Delivery].DeliveryId,dbo.[Delivery].Amount, dbo.[Delivery].Date, dbo.[Delivery].DistributorId,dbo.[Delivery].SupplyId,
+dbo.[Supply].ProductId, dbo.[Supply].ShopId
+FROM     dbo.[Delivery]
+INNER JOIN dbo.[Supply] on dbo.[Delivery].SupplyId = dbo.[Supply].SupplyId;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -313,6 +335,24 @@ FROM     dbo.[Delivery];</property>
                       lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DistributorId]"
                       name="DistributorId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      name="ProductId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ShopId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[ShopId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ShopId]"
+                      name="ShopId"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -337,6 +377,14 @@ FROM     dbo.[Delivery];</property>
                       refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[DistributorId]"
                       dataType="i4"
                       name="DistributorId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[ShopId]"
+                      dataType="i4"
+                      name="ShopId" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -370,6 +418,16 @@ FROM     dbo.[Delivery];</property>
                       dataType="i4"
                       lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[SupplyId]"
                       name="SupplyId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      name="ProductId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ShopId]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ShopId]"
+                      name="ShopId" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -472,13 +530,13 @@ FROM     dbo.[Delivery];</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="285,42"
-          Id="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01"
-          TopLeft="123.958333573408,6.6833330526617" />
-        <NodeLayout
           Size="217,42"
           Id="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS"
           TopLeft="159.386909571668,253.792857251337" />
+        <NodeLayout
+          Size="285,42"
+          Id="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01"
+          TopLeft="123.958333573408,6.6833330526617" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o dostawach.Paths[OLE DB Source Output]"
           TopLeft="267.172621572538,48.6833330526617">
@@ -505,14 +563,6 @@ FROM     dbo.[Delivery];</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS">
     <Properties>
       <Property>
@@ -522,6 +572,14 @@ FROM     dbo.[Delivery];</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
