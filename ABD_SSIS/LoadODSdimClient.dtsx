@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-45825LP"
   DTS:CreatorName="DESKTOP-45825LP\Kuba"
-  DTS:DTSID="{781DE128-E749-4833-9EBD-E5CF222DF382}"
+  DTS:DTSID="{46B7DE02-2006-4E58-AEEF-FEFEA5408F70}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="LoadODSdimClient"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{21BD709B-AAB3-4DA6-911D-7BBB88116EB3}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{C54FDE6A-F07A-4604-8667-26205962BEBB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
