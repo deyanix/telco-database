@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSdimShop"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{D3F8935C-454D-436B-A325-AB658C361655}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{2833076C-1D36-4C38-9566-2F10D5FA69E6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,7 +32,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}"
-          SQLTask:SqlStatementSource="DELETE FROM DimClientSt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM DimShopSt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -367,8 +367,7 @@
                       name="ZipCode" />
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o sklepach\Wpisywanie sklepów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      codePage="1250"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Name" />
                     <externalMetadataColumn
@@ -918,11 +917,33 @@ from
         <NodeLayout
           Size="222,42"
           Id="Package\Przetwarzanie danych o sklepach\Wpisywanie sklepów do ODS"
-          TopLeft="124.958338143097,266.65000010848" />
+          TopLeft="146.958338143097,267.65000010848" />
         <NodeLayout
           Size="244,42"
           Id="Package\Przetwarzanie danych o sklepach\Dostosowanie kodowania tekstów"
           TopLeft="139,132" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o sklepach.Paths[Data Conversion Output]"
+          TopLeft="259.479169071548,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93.65000010848"
+              Start="0,0"
+              End="0,86.15000010848">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.15000010848" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie danych o sklepach.Paths[OLE DB Source Output]"
           TopLeft="258.479166786704,48.6833330526617">
@@ -937,40 +958,6 @@ from
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,75.8166669473383" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Przetwarzanie danych o sklepach.Paths[Data Conversion Output]"
-          TopLeft="261,174">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-25.041661856903,92.65000010848"
-              Start="0,0"
-              End="-25.041661856903,85.15000010848">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.32500005424" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,42.32500005424"
-                    Point2="0,46.32500005424"
-                    Point3="-4,46.32500005424" />
-                  <mssgle:LineSegment
-                    End="-21.041661856903,46.32500005424" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.041661856903,46.32500005424"
-                    Point2="-25.041661856903,46.32500005424"
-                    Point3="-25.041661856903,50.32500005424" />
-                  <mssgle:LineSegment
-                    End="-25.041661856903,85.15000010848" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
