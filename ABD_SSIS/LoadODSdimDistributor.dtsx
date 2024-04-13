@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-J9J7RMH"
   DTS:CreatorName="DESKTOP-J9J7RMH\Kuba"
-  DTS:DTSID="{32CD9F52-4E84-456A-BC85-43B64A33FEFF}"
+  DTS:DTSID="{08B06D4B-4A8D-4432-BA90-5804B962D2F8}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="Package3"
+  DTS:ObjectName="LoadODSdimDistributor"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{FFC51D6B-C152-4F34-AC07-B9A3C96A78B1}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{7019C15E-8962-4E98-8355-35A73C849221}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -778,11 +778,7 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
     design-time-name="Package\Przetwarzanie danych o dystrybutorach">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="302,42"
-          Id="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01"
-          TopLeft="123.958333573408,6.6833330526617" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="223,42"
           Id="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS"
@@ -791,6 +787,10 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
           Size="244,42"
           Id="Package\Przetwarzanie danych o dystrybutorach\Dostosowanie kodowania tekstów"
           TopLeft="149.285714285714,121.428571428571" />
+        <NodeLayout
+          Size="302,42"
+          Id="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01"
+          TopLeft="123.958333573408,6.6833330526617" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o dystrybutorach.Paths[OLE DB Source Output]"
           TopLeft="273.122023929561,48.6833330526617">
@@ -810,7 +810,9 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -832,20 +834,14 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Przetwarzanie danych o dystrybutorach\Wpisywanie klientów do ODS">
     <Properties>
@@ -856,6 +852,14 @@ INNER JOIN Address ON Distributor.AddressId = Address.AddressId;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o dystrybutorach\Ładowanie danych o dystrybutorach z SRC01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
