@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-J9J7RMH"
   DTS:CreatorName="DESKTOP-J9J7RMH\Kuba"
-  DTS:DTSID="{3363E518-C96E-458D-97F1-70678F21DE13}"
+  DTS:DTSID="{97195464-6EC3-4E59-A562-3A5C394A2B0F}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="LoadODSFactSales"
+  DTS:ObjectName="LoadODSFactSale"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{C142F8D4-EBA0-41B7-9158-9EA530F36C34}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{B0AAB9D6-7F45-4C7D-BF3A-98B0054E606F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
