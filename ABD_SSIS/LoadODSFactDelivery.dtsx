@@ -1,0 +1,529 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/13/2024 2:48:10 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-J9J7RMH"
+  DTS:CreatorName="DESKTOP-J9J7RMH\Kuba"
+  DTS:DTSID="{486C61BE-BFD8-445E-AE03-F70E8F88AD75}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="LoadODSFactDelivery"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{17799495-038E-402E-8C8C-7BD292E9F05B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Czyszczenie - Delivery"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="czyszczenie danych na temat dostaw"
+      DTS:DTSID="{c4820edc-bb9f-42e0-9e32-ccb13c67777d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Czyszczenie - Delivery"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}"
+          SQLTask:SqlStatementSource="DELETE FROM FactDeliverySt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Przetwarzanie danych o dostawach"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{aeac7108-6df9-4f99-8427-0e206a2a1c7f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Przetwarzanie danych o dostawach"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Wpisywanie dostaw do ODS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactDeliverySt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Connections[OleDbConnection]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[DeliveryId]"
+                      cachedDataType="i4"
+                      cachedName="DeliveryId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[DeliveryId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DeliveryId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[Amount]"
+                      cachedDataType="i2"
+                      cachedName="Amount"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Amount]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[SupplyId]"
+                      cachedDataType="i4"
+                      cachedName="SupplyId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[SupplyId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[SupplyId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[DistributorId]"
+                      cachedDataType="i4"
+                      cachedName="DistributorId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[DistributorId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DistributorId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[DeliveryId]"
+                      dataType="i4"
+                      name="DeliveryId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="i2"
+                      name="Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[DistributorId]"
+                      dataType="i4"
+                      name="DistributorId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[SupplyId]"
+                      dataType="i4"
+                      name="SupplyId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Ładowanie danych o dostawach  z SRC01"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Client]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dbo.[Delivery].DeliveryId,dbo.[Delivery].Amount, dbo.[Delivery].Date, dbo.[Delivery].DistributorId,dbo.[Delivery].SupplyId
+FROM     dbo.[Delivery];</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Connections[OleDbConnection]"
+                  connectionManagerID="{049CE46A-B9AB-43EF-891A-05E5649F9FFB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_SRC1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DeliveryId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[DeliveryId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DeliveryId]"
+                      name="DeliveryId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="10"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[SupplyId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[SupplyId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[SupplyId]"
+                      name="SupplyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DistributorId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[DistributorId]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[DistributorId]"
+                      name="DistributorId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[DeliveryId]"
+                      dataType="i4"
+                      name="DeliveryId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="i2"
+                      name="Amount" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[SupplyId]"
+                      dataType="i4"
+                      name="SupplyId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[DistributorId]"
+                      dataType="i4"
+                      name="DistributorId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[DeliveryId]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[DeliveryId]"
+                      name="DeliveryId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="i2"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[DistributorId]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[DistributorId]"
+                      name="DistributorId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[SupplyId]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[SupplyId]"
+                      name="SupplyId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Przetwarzanie danych o dostawach.Paths[OLE DB Source Output]"
+              endId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0b3277b0-a36c-471c-97e2-10d3a118c6eb}"
+      DTS:From="Package\Czyszczenie - Delivery"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Przetwarzanie danych o dostawach" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Czyszczenie - Delivery"
+          TopLeft="84.166665706369,60" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\Przetwarzanie danych o dostawach"
+          TopLeft="60,146.666667355432" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="173.666665706369,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.333334293631,44.666667355432"
+              Start="0,0"
+              End="12.333334293631,37.166667355432">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.333333677716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.333333677716"
+                    Point2="0,22.333333677716"
+                    Point3="4,22.333333677716" />
+                  <mssgle:LineSegment
+                    End="8.333334293631,22.333333677716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.333334293631,22.333333677716"
+                    Point2="12.333334293631,22.333333677716"
+                    Point3="12.333334293631,26.333333677716" />
+                  <mssgle:LineSegment
+                    End="12.333334293631,37.166667355432" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Przetwarzanie danych o dostawach">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="285,42"
+          Id="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01"
+          TopLeft="123.958333573408,6.6833330526617" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS"
+          TopLeft="159.386909571668,253.792857251337" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o dostawach.Paths[OLE DB Source Output]"
+          TopLeft="267.172621572538,48.6833330526617">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,205.109524198675"
+              Start="0,0"
+              End="0,197.609524198675">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,197.609524198675" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

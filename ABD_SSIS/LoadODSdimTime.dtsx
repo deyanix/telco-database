@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="TYRION"
   DTS:CreatorName="TYRION\deyanix"
-  DTS:DTSID="{41C68621-0B85-429D-A041-EC6CCE81A5F5}"
+  DTS:DTSID="{84A00A25-B87A-4393-AF42-DF004B3DA2C9}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="LoadODSdimTime"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{7FC85323-90E5-45FC-AD0E-02C3D7D42C1C}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{EB64CA0F-BC47-43BB-8DCA-33A11E27702E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
