@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">GLADOS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="Pr0ce4j8suI=" SSIS:IV="KAJpZ7NMAHmUl+KddICugw==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">pdkfD52lFZG2UQgh/2+FiUATuAdoQwwLmFzll8mGF4EDzQakWjCx02e/tZN3NNXqEXgoXhEyk/1j4wilRUKktlwiqnhR4pPbDZIjmV80VfPzINpAOsXzkxfu+1v0lmUpwRx6KVHIS1luoeJHJbnwYXuLAqyNxLDc3B9z4CI3Uxg/rZDdLiZDo0er+LDTLaAy</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="4RAM/5f504c=" SSIS:IV="61aWjM40URzuY6d7aMoi+w==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">0LAmhU4DmTYQaGsn1fVgF2WmbIz4HHObaE296M8hxNxjfs/up+sWDvuBLbbqrMBWVbdvdGNhP2Vmikf0OOXRL+cw9xFBK+88Wz4Ib1B10oUOXiaH45RPHkKv1qmxytMU/l+ZL2IArp6m+katm3piDZ0yLshlQ0Ua8OSNc38S+BkZ8rAVxG4aJwxVR3ajkDty</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -40,6 +40,8 @@
           <SSIS:Package SSIS:Name="LoadODSdimShop.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadDWDimTime.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSMaininterface.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="LoadDWDimCard.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="LoadDWDimClient.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ABD_GR01_SRC2.conmgr" />
@@ -598,7 +600,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -613,7 +615,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -628,7 +630,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.ConnectRetryCount">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.ConnectRetryCount">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -643,7 +645,7 @@
                 <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.ConnectRetryInterval">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.ConnectRetryInterval">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -658,7 +660,7 @@
                 <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -673,7 +675,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -688,7 +690,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.Password">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -702,7 +704,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -717,7 +719,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -732,7 +734,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.194.29.170.4.ABD_GR01_DW.abdgr01.UserName">
+            <SSIS:Parameter SSIS:Name="CM.ABD_GR01_DW.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -885,6 +887,23 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="LoadDWDimTime.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8FF7CCB2-5B5D-4EAC-91C0-C6655B8A7829}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">LoadDWDimTime</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B4DA6051-A914-4D86-9A63-19CE13C3EA2B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="LoadODSMaininterface.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{D87D0993-D52D-4F3F-A062-3CC58613AA0F}</SSIS:Property>
@@ -902,16 +921,33 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="LoadDWDimTime.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="LoadDWDimCard.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{8FF7CCB2-5B5D-4EAC-91C0-C6655B8A7829}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">LoadDWDimTime</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{5CF36FAE-2417-4913-A87A-B80EF9E68B7B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B4DA6051-A914-4D86-9A63-19CE13C3EA2B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{96DD7EDC-FCC8-4E5F-9A37-E42EC5BA2F04}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="LoadDWDimClient.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{627CBCC1-6CBA-4689-86E6-C5DD9E245474}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B8F17B56-72A3-4E66-B530-8857E31562D5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
