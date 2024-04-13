@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">GLADOS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="xABNyq+FdAY=" SSIS:IV="fYkNTfXwuyorK/0dlNKx6A==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">ztBqv0t1fLrFPyIuqKPBeOkw+TJSwG8lGUUu9OCnAw+GkrkUo65wNAjs7ai7WNF3P/MwummDbSg1bBtRMkvlTJOviZglbm3SKDuutI5ZPlOft4wsCAOmkftscXozRnei03TFGHFKYBLJ9F1M5PzfdRWEdcJPeVLEudI05hWRMgbnqCv+x13xhRTJl2YrrYSv</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="rh+325cQaMg=" SSIS:IV="Nags4QE+kAiT7qlepaVtTA==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">W12CT/vmKDRt+guKfq/SvEUW2fJHxTRmX9axXp+2eyGdt8W/F/mkrAnFgL+X0xKkU/kBZTRkR2AMKaK7papMMegne1qJXH10yBnThMiax4jqYJSWyT7pLnT3n0FUoYgXZ4Go9Zh3PeGArxY9jEJpDnv1KMbtM4xARVOQSkDCRm1iogogDiO+Lv6kIZkQliEM</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -38,6 +38,7 @@
           <SSIS:Package SSIS:Name="LoadODSdimClient.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSdimTime.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSdimShop.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="LoadODSMaininterface.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ABD_GR01_SRC2.conmgr" />
@@ -722,10 +723,27 @@
                 <SSIS:Property SSIS:Name="Name">LoadODSdimShop</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2833076C-1D36-4C38-9566-2F10D5FA69E6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="LoadODSMaininterface.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D87D0993-D52D-4F3F-A062-3CC58613AA0F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">LoadODSMaininterface</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{79909285-272E-4704-8C31-C48F8F96FF40}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{FA68BF8C-420D-4677-B162-B2E692299321}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
