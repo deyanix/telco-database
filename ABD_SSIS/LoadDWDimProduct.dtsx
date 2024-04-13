@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-T75ATUH"
   DTS:CreatorName="DESKTOP-T75ATUH\barte"
-  DTS:DTSID="{F4376377-7DBD-4BE2-ACE2-2A515F466055}"
+  DTS:DTSID="{B0562E9B-DA4A-47AD-94FF-7050E5B989F7}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="LoadDWDimProduct"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{C8E838E0-BFF0-41A3-9DEE-7DCE50511CB0}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{723CE6A0-A59D-48C0-8B09-80394AE2B816}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -915,13 +915,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="216,42"
+          Id="Package\Data Flow Task\Slowly Changing Dimension"
+          TopLeft="210,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Data Flow Task\OLE DB Command"
+          TopLeft="231.5,209.5" />
+        <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="239.5,5.5" />
         <NodeLayout
-          Size="216,42"
-          Id="Package\Data Flow Task\Slowly Changing Dimension"
-          TopLeft="210,107.5" />
+          Size="165,42"
+          Id="Package\Data Flow Task\Insert Destination"
+          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="318,47.5">
@@ -944,10 +952,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Data Flow Task\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[New Output]"
           TopLeft="283.333333333333,149.5">
@@ -984,10 +988,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Data Flow Task\OLE DB Command"
-          TopLeft="231.5,209.5" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Changing Attribute Updates Output]"
           TopLeft="352.666666666667,149.5">
@@ -1027,19 +1027,6 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Slowly Changing Dimension">
     <Properties>
@@ -1104,6 +1091,19 @@
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

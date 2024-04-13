@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSFactSale"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{B0AAB9D6-7F45-4C7D-BF3A-98B0054E606F}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{9F67A73D-DFB2-434F-9B40-A1BB5C67C7D5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -249,9 +249,16 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dbo.[Order].OrderId,dbo.[Order].Date, dbo.[Order].Price, dbo.[Order].ClientId, dbo.[OrderItem].ProductId,
-         dbo.[Order].ShopId, dbo.OrderItem.OrderItemId, dbo.[OrderItem].Amount
-FROM     dbo.[Order]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    dbo.[Order].OrderId,
+    dbo.[Order].Date, 
+    dbo.[Order].Price, 
+    dbo.[Order].ClientId, 
+    dbo.[OrderItem].ProductId,
+    COALESCE(dbo.[Order].ShopId, 0) AS ShopId,  -- Change NULL to 0
+    dbo.OrderItem.OrderItemId, 
+    dbo.[OrderItem].Amount
+FROM dbo.[Order]
 INNER JOIN dbo.OrderItem ON dbo.[Order].OrderId = dbo.OrderItem.OrderId;</property>
                 <property
                   dataType="System.String"
@@ -548,13 +555,13 @@ INNER JOIN dbo.OrderItem ON dbo.[Order].OrderId = dbo.OrderItem.OrderId;</proper
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="233,42"
-          Id="Package\Przetwarzanie danych o sprzedażach\Wpisywanie sprzedaży do ODS"
-          TopLeft="159.386909571668,253.792857251337" />
-        <NodeLayout
           Size="295,42"
           Id="Package\Przetwarzanie danych o sprzedażach\Ładowanie danych o sprzedażach  z SRC01"
           TopLeft="123.958333573408,6.6833330526617" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Przetwarzanie danych o sprzedażach\Wpisywanie sprzedaży do ODS"
+          TopLeft="159.386909571668,253.792857251337" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o sprzedażach.Paths[OLE DB Source Output]"
           TopLeft="273.672621572538,48.6833330526617">
