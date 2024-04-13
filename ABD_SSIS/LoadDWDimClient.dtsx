@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{F5B7652C-5D24-422B-885D-3DF572B42117}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{0F7C0634-7484-43BB-85CB-2411E88D647E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -169,6 +169,13 @@
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientSourceID]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]" />
                     <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[CreationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CreationDate"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]" />
+                    <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[RegistrationDate]"
                       cachedDataType="wstr"
                       cachedLength="10"
@@ -234,15 +241,15 @@
                       dataType="i4"
                       name="ClientSourceID" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
-                      dataType="wstr"
-                      length="10"
-                      name="DateFrom" />
-                    <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
                       dataType="wstr"
                       length="10"
                       name="DateTo" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
+                      dataType="wstr"
+                      length="10"
+                      name="DateFrom" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
                       dataType="wstr"
@@ -294,7 +301,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClient] SET [AddressSourceID] = ?,[ApartmentNumber] = ?,[BuildingNumber] = ?,[City] = ?,[Country] = ?,[RegistrationDate] = ?,[Sex] = ?,[Street] = ?,[ZipCode] = ? WHERE [ClientSourceID] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClient] SET [AddressSourceID] = ?,[ApartmentNumber] = ?,[BuildingNumber] = ?,[City] = ?,[Country] = ?,[Sex] = ?,[Street] = ?,[ZipCode] = ? WHERE [ClientSourceID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -349,7 +356,7 @@
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[ClientSourceID]"
                       cachedDataType="i4"
                       cachedName="ClientSourceID"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[Country]"
@@ -359,25 +366,18 @@
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]" />
                     <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[RegistrationDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="RegistrationDate"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]" />
-                    <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[Sex]"
                       cachedDataType="wstr"
                       cachedLength="16"
                       cachedName="Sex"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[Street]"
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="Street"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Street]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[ZipCode]"
@@ -385,7 +385,7 @@
                       cachedDataType="str"
                       cachedLength="6"
                       cachedName="ZipCode"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ZipCode]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -454,19 +454,19 @@
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       dataType="wstr"
-                      length="10"
+                      length="16"
                       name="Param_5">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
+                          name="DBParamInfoFlags">1</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       dataType="wstr"
-                      length="16"
+                      length="30"
                       name="Param_6">
                       <properties>
                         <property
@@ -477,8 +477,9 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      dataType="wstr"
-                      length="30"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
                       name="Param_7">
                       <properties>
                         <property
@@ -489,21 +490,8 @@
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
-                      name="Param_8">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       dataType="i4"
-                      name="Param_9">
+                      name="Param_8">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -737,6 +725,16 @@
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Surname]"
                       name="Surname"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
+                      length="10"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]"
+                      name="CreationDate"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -805,6 +803,11 @@
                       dataType="wstr"
                       length="30"
                       name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="CreationDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -891,6 +894,12 @@
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Error Output].Columns[Surname]"
                       name="Surname" />
                     <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
+                      name="CreationDate" />
+                    <outputColumn
                       refId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -919,7 +928,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [RegistrationDate], [Sex], [Street], [ZipCode] FROM [dbo].[DimClient]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [Sex], [Street], [ZipCode] FROM [dbo].[DimClient]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1052,20 +1061,6 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[RegistrationDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="RegistrationDate"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[RegistrationDate]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          name="ColumnType"
-                          typeConverter="ColumnType">2</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Sex]"
                       cachedDataType="wstr"
                       cachedLength="16"
@@ -1141,11 +1136,6 @@
                       dataType="wstr"
                       length="50"
                       name="Country" />
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[RegistrationDate]"
-                      dataType="wstr"
-                      length="10"
-                      name="RegistrationDate" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Sex]"
                       dataType="wstr"
@@ -1436,10 +1426,16 @@
       &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;DateFrom&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;RegistrationDate&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]&lt;/IdentificationString&gt;
