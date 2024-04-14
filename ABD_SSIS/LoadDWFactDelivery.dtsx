@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadDWFactDelivery"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{3967E1FF-D337-4F05-B7FB-1584FCD80F2F}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{F81241D3-3C0C-4817-99F9-9BDE8AAD95F9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -756,12 +756,6 @@ where [refTable].[Date] = ?</property>
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       lineageId="Package\Data Flow Task\DimProduct.Outputs[Lookup Match Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DistributorId]"
-                      cachedDataType="i4"
-                      cachedName="DistributorId"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DistributorID]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DistributorId]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InStock]"
                       cachedDataType="i4"
                       cachedName="InStock"
@@ -773,6 +767,12 @@ where [refTable].[Date] = ?</property>
                       cachedName="Pcs"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pcs]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pcs]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DistributorID]"
+                      cachedDataType="i4"
+                      cachedName="DistributorID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DistributorID]"
+                      lineageId="Package\Data Flow Task\DimDistributor.Outputs[Lookup Match Output].Columns[DistributorID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">

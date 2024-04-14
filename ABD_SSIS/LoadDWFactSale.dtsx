@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadDWFactSale"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{00EB9A8D-1DE1-439D-8C70-CDC42537A373}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{E68E9CD1-4CA7-4EC7-B443-0EFE89580CC9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1126,7 +1126,9 @@ where [refTable].[Date] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-17.83447265625,37.96337890625,35.6689453125,9.5732421875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1221,7 +1223,7 @@ where [refTable].[Date] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="10.05861328125,5,96.3827734375,11.609375"
+              BoundingBox="-32.55673828125,5,141.6134765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

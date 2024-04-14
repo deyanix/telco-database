@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSMaininterface"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{DE828993-2A9E-409B-8EB7-0847A5CA901B}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{2C75D8AA-EDBD-4E9A-8678-968D54F104E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -214,8 +214,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="513,303"
-          Size="513,346"
+          PanelSize="670,303"
+          Size="670,346"
           Id="Package\Ładowanie ODS"
           TopLeft="652.863646893789,52.3636373967834" />
       </GraphLayout>
