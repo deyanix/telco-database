@@ -329,6 +329,12 @@
                       cachedName="RegistrationDate"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
                       lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]" />
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Age]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -405,6 +411,10 @@
                       dataType="wstr"
                       length="10"
                       name="ModificationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="bool"
+                      name="Active" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
