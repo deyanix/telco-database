@@ -1,38 +1,55 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="4/13/2024 3:35:08 PM"
+  DTS:CreationDate="4/14/2024 9:05:13 PM"
   DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="DESKTOP-45825LP"
-  DTS:CreatorName="DESKTOP-45825LP\Kuba"
-  DTS:DTSID="{D87D0993-D52D-4F3F-A062-3CC58613AA0F}"
+  DTS:CreatorComputerName="GLADOS"
+  DTS:CreatorName="GLADOS\deyanix"
+  DTS:DTSID="{D02E1131-0678-4D4A-B0FE-7FA1D7A301BB}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="LoadODSMaininterface"
+  DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{DE828993-2A9E-409B-8EB7-0847A5CA901B}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{5FEE3B40-26F3-4F73-B606-84462237367B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Ładowanie ODS"
+      DTS:refId="Package\Ładowanie DW"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{7786F392-18B7-4C9E-8B1F-10973858CDD9}"
+      DTS:DTSID="{2298F8E2-DC37-4714-B611-664D8E468FCE}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Ładowanie ODS">
+      DTS:ObjectName="Ładowanie DW">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie DimClient"
+          DTS:refId="Package\Ładowanie DW\Ładowanie DimCard"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{5E18DDAA-8496-49AE-93D3-B7A0BC72F529}"
+          DTS:DTSID="{1EAEE266-3461-4513-8B0F-D404F59393CE}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Ładowanie DimCard"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>LoadDWDimCard.dtsx</PackageName>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Ładowanie DW\Ładowanie DimClient"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{901F4F1B-C5B1-4E56-84FC-716BC9DAE872}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie DimClient"
@@ -41,15 +58,15 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSdimClient.dtsx</PackageName>
+              <PackageName>LoadDWDimClient.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie DimDistributor"
+          DTS:refId="Package\Ładowanie DW\Ładowanie DimDistributor"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{DE93138C-C316-4427-A251-8F617188C4A1}"
+          DTS:DTSID="{53B532C3-5C34-416F-B45C-8CEACF6CDD4A}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie DimDistributor"
@@ -58,32 +75,32 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSdimDistributor.dtsx</PackageName>
+              <PackageName>LoadDWDimDistributor.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie DimProduct i DimCategory"
+          DTS:refId="Package\Ładowanie DW\Ładowanie DimProduct"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{AFFC17EF-3510-4B5F-B500-23177E485AA6}"
+          DTS:DTSID="{4EF1DCE3-8508-451E-AD59-B241A76C3CCD}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Ładowanie DimProduct i DimCategory"
+          DTS:ObjectName="Ładowanie DimProduct"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSDimProduct.dtsx</PackageName>
+              <PackageName>LoadDWDimProduct.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie DimShop"
+          DTS:refId="Package\Ładowanie DW\Ładowanie DimShop"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{57798287-2354-42A8-B015-168BC4EA1D60}"
+          DTS:DTSID="{CEC29EA8-AB56-48CB-97DE-24B5A180302C}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie DimShop"
@@ -92,15 +109,15 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSdimShop.dtsx</PackageName>
+              <PackageName>LoadDWDimShop.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie DimTime"
+          DTS:refId="Package\Ładowanie DW\Ładowanie DimTime"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{A48E12B6-0998-4A14-B7EF-051BC1A45B3B}"
+          DTS:DTSID="{FEECD91C-DDA7-4A4A-B48E-D2CD3614CAAF}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie DimTime"
@@ -109,15 +126,15 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSdimTime.dtsx</PackageName>
+              <PackageName>LoadDWDimTime.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie FactDelivery"
+          DTS:refId="Package\Ładowanie DW\Ładowanie FactDelivery"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{19446F4B-EB06-4165-9E7E-89E79586C319}"
+          DTS:DTSID="{885268C7-4DB0-456E-BB13-02D795AE2A9E}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie FactDelivery"
@@ -126,15 +143,15 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSFactDelivery.dtsx</PackageName>
+              <PackageName>LoadDWFactDelivery.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie FactSale"
+          DTS:refId="Package\Ładowanie DW\Ładowanie FactSale"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{91597BDD-AD08-4E16-9BB6-D917C7D0D2EC}"
+          DTS:DTSID="{85508E4E-6FB2-4FC4-96F0-4C10DF9DFDFF}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie FactSale"
@@ -143,15 +160,15 @@
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>LoadODSFactSale.dtsx</PackageName>
+              <PackageName>LoadDWFactSale.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Ładowanie ODS\Ładowanie FactScore"
+          DTS:refId="Package\Ładowanie DW\Ładowanie FactScore"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
-          DTS:DTSID="{652932F4-6C70-44BE-9CD3-0C9C8ADA6AFA}"
+          DTS:DTSID="{3CF15FB8-AFDC-436E-B492-066EA14E4B2F}"
           DTS:ExecutableType="Microsoft.ExecutePackageTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Ładowanie FactScore"
@@ -180,44 +197,48 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="208,42"
-          Id="Package\Ładowanie ODS\Ładowanie DimClient"
-          TopLeft="29.9999892711644,16.7666667562061" />
+          Size="203,42"
+          Id="Package\Ładowanie DW\Ładowanie DimCard"
+          TopLeft="21,20" />
         <NodeLayout
-          Size="210,42"
-          Id="Package\Ładowanie ODS\Ładowanie DimDistributor"
-          TopLeft="28.6904654285268,63.1904780845794" />
-        <NodeLayout
-          Size="267,42"
-          Id="Package\Ładowanie ODS\Ładowanie DimProduct i DimCategory"
-          TopLeft="31,206" />
-        <NodeLayout
-          Size="208,42"
-          Id="Package\Ładowanie ODS\Ładowanie DimShop"
-          TopLeft="29.9999892711643,110.400002252261" />
+          Size="201,42"
+          Id="Package\Ładowanie DW\Ładowanie DimClient"
+          TopLeft="23.4285714285714,73.5714285714286" />
         <NodeLayout
           Size="205,42"
-          Id="Package\Ładowanie ODS\Ładowanie DimTime"
-          TopLeft="32.3333226707251,159.066669297748" />
+          Id="Package\Ładowanie DW\Ładowanie DimDistributor"
+          TopLeft="22.8571428571429,127.190476190476" />
         <NodeLayout
-          Size="218,42"
-          Id="Package\Ładowanie ODS\Ładowanie FactDelivery"
-          TopLeft="262.142837075961,16.5619060981084" />
+          Size="207,43"
+          Id="Package\Ładowanie DW\Ładowanie DimProduct"
+          TopLeft="24.952380952381,179.238095238095" />
         <NodeLayout
-          Size="222,42"
-          Id="Package\Ładowanie ODS\Ładowanie FactSale"
-          TopLeft="262.857122790247,61.9238110184292" />
+          Size="204,42"
+          Id="Package\Ładowanie DW\Ładowanie DimShop"
+          TopLeft="26.2857142857142,231.428571428572" />
         <NodeLayout
-          Size="222,42"
-          Id="Package\Ładowanie ODS\Ładowanie FactScore"
-          TopLeft="264.285694218818,108.980954226842" />
+          Size="202,42"
+          Id="Package\Ładowanie DW\Ładowanie DimTime"
+          TopLeft="26.9999999999999,280.714285714286" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Ładowanie DW\Ładowanie FactDelivery"
+          TopLeft="331.5,15" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Ładowanie DW\Ładowanie FactSale"
+          TopLeft="332.452380952381,70.4523809523809" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Ładowanie DW\Ładowanie FactScore"
+          TopLeft="332,126.666666666667" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="513,303"
-          Size="513,346"
-          Id="Package\Ładowanie ODS"
-          TopLeft="652.863646893789,52.3636373967834" />
+          PanelSize="622,349"
+          Size="622,392"
+          Id="Package\Ładowanie DW"
+          TopLeft="661.076923076923,47.4285714285714" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
