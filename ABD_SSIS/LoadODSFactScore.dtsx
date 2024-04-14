@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSFactScore"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{F200308B-15C4-4F3C-BD09-0C08E855B538}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{A1CDD6BF-C1D8-4016-9678-6CB3663A1E7C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -832,6 +832,28 @@ FROM     Client</property>
           Id="Package\Przetwarzanie danych o punktowaniu\Dodanie danych o punktowaniu z SR02"
           TopLeft="267.208321602808,410.783335087962" />
         <EdgeLayout
+          Id="Package\Przetwarzanie danych o punktowaniu.Paths[OLE DB Source Output]"
+          TopLeft="274.187497032185,171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.883334385421"
+              Start="0,0"
+              End="0,45.383334385421">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.383334385421" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Przetwarzanie danych o punktowaniu.Paths[Lookup Match Output]"
           TopLeft="406.437496436139,452.783335087962">
           <EdgeLayout.Curve>
@@ -851,7 +873,7 @@ FROM     Client</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-57.0600390625,9.57499938269399,114.120078125,16"
+              BoundingBox="-48.19138671875,11.770311882694,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -881,28 +903,6 @@ FROM     Client</property>
                     Point3="129.333327538437,76.4500003512705" />
                   <mssgle:LineSegment
                     End="129.333327538437,137.400000702541" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Przetwarzanie danych o punktowaniu.Paths[OLE DB Source Output]"
-          TopLeft="274.187497032185,171">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.883334385421"
-              Start="0,0"
-              End="0,45.383334385421">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.383334385421" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -946,7 +946,7 @@ FROM     Client</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q3:int">0</Value>
+          type="q3:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -954,7 +954,7 @@ FROM     Client</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q4:boolean">false</Value>
+          type="q4:string">false</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
