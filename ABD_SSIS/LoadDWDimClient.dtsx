@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{38A394BA-30A3-41F8-B0DA-6E90C65BDD4A}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{077D7792-472C-4FCB-A0B7-F9D0FA85A429}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -329,6 +329,12 @@
                       cachedName="RegistrationDate"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
                       lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]" />
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Age]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -405,6 +411,10 @@
                       dataType="wstr"
                       length="10"
                       name="ModificationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="bool"
+                      name="Active" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1967,13 +1977,59 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="216,42"
-          Id="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension"
-          TopLeft="132,107.5" />
-        <NodeLayout
           Size="264,42"
           Id="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS"
           TopLeft="108,5.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Ładowanie tabeli DimClient\OLE DB Command"
+          TopLeft="5.50000000000006,311.5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Ładowanie tabeli DimClient\OLE DB Command 1"
+          TopLeft="301,209.5" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Ładowanie tabeli DimClient\Derived Column 1"
+          TopLeft="156.5,515.5" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Ładowanie tabeli DimClient\Union All"
+          TopLeft="178.5,413.5" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Ładowanie tabeli DimClient\Insert Destination"
+          TopLeft="157.5,617.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Ładowanie tabeli DimClient\Derived Column"
+          TopLeft="21.0000000000001,209.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension"
+          TopLeft="132,107.5" />
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[Union All Output 1]"
+          TopLeft="240,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimClient.Paths[OLE DB Source Output]"
           TopLeft="240,47.5">
@@ -1996,76 +2052,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Ładowanie tabeli DimClient\Derived Column"
-          TopLeft="21.0000000000001,209.5" />
         <EdgeLayout
-          Id="Package\Ładowanie tabeli DimClient.Paths[Historical Attribute Inserts Output]"
-          TopLeft="188,149.5">
+          Id="Package\Ładowanie tabeli DimClient.Paths[OLE DB Command Output]"
+          TopLeft="92.0000000000001,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-88,60"
+              EndConnector="128.833333333333,60"
               Start="0,0"
-              End="-88,52.5">
+              End="128.833333333333,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.4878048780488" />
+                    End="0,31.53772070626" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.4878048780488"
-                    Point2="0,20.4878048780488"
-                    Point3="-4,20.4878048780488" />
+                    Point1="0,31.53772070626"
+                    Point2="0,35.53772070626"
+                    Point3="4,35.53772070626" />
                   <mssgle:LineSegment
-                    End="-84,20.4878048780488" />
+                    End="124.833333333333,35.53772070626" />
                   <mssgle:CubicBezierSegment
-                    Point1="-84,20.4878048780488"
-                    Point2="-88,20.4878048780488"
-                    Point3="-88,24.4878048780488" />
+                    Point1="124.833333333333,35.53772070626"
+                    Point2="128.833333333333,35.53772070626"
+                    Point3="128.833333333333,39.53772070626" />
                   <mssgle:LineSegment
-                    End="-88,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-119.05638671875,25.4878048780488,150.1127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Ładowanie tabeli DimClient\OLE DB Command"
-          TopLeft="5.50000000000006,311.5" />
-        <EdgeLayout
-          Id="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output]"
-          TopLeft="100,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-8,60"
-              Start="0,0"
-              End="-8,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-4,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4,30"
-                    Point2="-8,30"
-                    Point3="-8,34" />
-                  <mssgle:LineSegment
-                    End="-8,52.5" />
+                    End="128.833333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2074,10 +2086,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="123,42"
-          Id="Package\Ładowanie tabeli DimClient\Union All"
-          TopLeft="178.5,413.5" />
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimClient.Paths[New Output]"
           TopLeft="240,149.5">
@@ -2115,69 +2123,41 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Ładowanie tabeli DimClient.Paths[OLE DB Command Output]"
-          TopLeft="92.0000000000001,353.5">
+          Id="Package\Ładowanie tabeli DimClient.Paths[Historical Attribute Inserts Output]"
+          TopLeft="188,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="128.833333333333,60"
+              EndConnector="-88,60"
               Start="0,0"
-              End="128.833333333333,52.5">
+              End="-88,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.53772070626" />
+                    End="0,16.4878048780488" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.53772070626"
-                    Point2="0,35.53772070626"
-                    Point3="4,35.53772070626" />
+                    Point1="0,16.4878048780488"
+                    Point2="0,20.4878048780488"
+                    Point3="-4,20.4878048780488" />
                   <mssgle:LineSegment
-                    End="124.833333333333,35.53772070626" />
+                    End="-84,20.4878048780488" />
                   <mssgle:CubicBezierSegment
-                    Point1="124.833333333333,35.53772070626"
-                    Point2="128.833333333333,35.53772070626"
-                    Point3="128.833333333333,39.53772070626" />
+                    Point1="-84,20.4878048780488"
+                    Point2="-88,20.4878048780488"
+                    Point3="-88,24.4878048780488" />
                   <mssgle:LineSegment
-                    End="128.833333333333,52.5" />
+                    End="-88,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-119.05638671875,25.4878048780488,150.1127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Ładowanie tabeli DimClient\Derived Column 1"
-          TopLeft="156.5,515.5" />
-        <EdgeLayout
-          Id="Package\Ładowanie tabeli DimClient.Paths[Union All Output 1]"
-          TopLeft="240,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Ładowanie tabeli DimClient\Insert Destination"
-          TopLeft="157.5,617.5" />
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output1]"
           TopLeft="240,557.5">
@@ -2200,10 +2180,40 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="182,42"
-          Id="Package\Ładowanie tabeli DimClient\OLE DB Command 1"
-          TopLeft="301,209.5" />
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output]"
+          TopLeft="100,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,60"
+              Start="0,0"
+              End="-8,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-4,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,30"
+                    Point2="-8,30"
+                    Point3="-8,34" />
+                  <mssgle:LineSegment
+                    End="-8,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimClient.Paths[Changing Attribute Updates Output]"
           TopLeft="292,149.5">
@@ -2243,6 +2253,32 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ładowanie tabeli DimClient\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension">
     <Properties>
@@ -2333,19 +2369,6 @@
   &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

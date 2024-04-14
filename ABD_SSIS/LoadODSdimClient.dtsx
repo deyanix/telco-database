@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSdimClient"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{2D83CA65-3B7C-4E6E-8CD3-7F7ED7F86979}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{C16259F8-95C5-4239-9DD9-C34188BA0702}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -84,7 +84,7 @@ where [refTable].[Email] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Surname" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Email" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PhoneNumber" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegistrationDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Surname" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Email" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PhoneNumber" dataType="DT_WSTR" length="16" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegistrationDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -155,6 +155,21 @@ where [refTable].[Email] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn">RegistrationDate</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[BirthDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="10"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">BirthDate</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -350,6 +365,12 @@ where [refTable].[Email] = ?</property>
                       cachedName="Sex"
                       externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output].Columns[Age]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[AddressId]"
                       cachedDataType="i4"
@@ -551,7 +572,7 @@ where [refTable].[Email] = ?</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClientSt] SET [ApartmentNumber] = ?,[BuildingNumber] = ?,[City] = ?,[Country] = ?,[Name] = ?,[Sex] = ?,[Street] = ?,[ZipCode] = ? WHERE [ClientSourceID] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClientSt] SET [Age] = ?,[ApartmentNumber] = ?,[BuildingNumber] = ?,[City] = ?,[Country] = ?,[Name] = ?,[Sex] = ?,[Street] = ?,[Surname] = ?,[ZipCode] = ? WHERE [ClientSourceID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -574,12 +595,18 @@ where [refTable].[Email] = ?</property>
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output].Columns[Age]" />
+                    <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ApartmentNumber]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="6"
                       cachedName="ApartmentNumber"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[BuildingNumber]"
@@ -587,71 +614,76 @@ where [refTable].[Email] = ?</property>
                       cachedDataType="str"
                       cachedLength="6"
                       cachedName="BuildingNumber"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[BuildingNumber]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[City]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="City"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[City]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ClientId]"
                       cachedDataType="i4"
                       cachedName="ClientId"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ClientId]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Country]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Country"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Name]"
                       cachedDataType="wstr"
                       cachedLength="126"
                       cachedName="Name"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       lineageId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output].Columns[Name]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Sex]"
                       cachedDataType="wstr"
                       cachedLength="12"
                       cachedName="Sex"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Street]"
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="Street"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Street]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[LastName]" />
                     <inputColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ZipCode]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="6"
                       cachedName="ZipCode"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                       lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
+                      dataType="i2"
                       name="Param_0">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -664,13 +696,14 @@ where [refTable].[Email] = ?</property>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      dataType="wstr"
-                      length="50"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
                       name="Param_2">
                       <properties>
                         <property
@@ -694,20 +727,8 @@ where [refTable].[Email] = ?</property>
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       dataType="wstr"
-                      length="61"
+                      length="50"
                       name="Param_4">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      dataType="wstr"
-                      length="16"
-                      name="Param_5">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -716,9 +737,21 @@ where [refTable].[Email] = ?</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="61"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       dataType="wstr"
-                      length="30"
+                      length="16"
                       name="Param_6">
                       <properties>
                         <property
@@ -729,9 +762,8 @@ where [refTable].[Email] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
+                      dataType="wstr"
+                      length="30"
                       name="Param_7">
                       <properties>
                         <property
@@ -742,8 +774,33 @@ where [refTable].[Email] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="30"
                       name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="Param_9">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                      dataType="i4"
+                      name="Param_10">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -886,7 +943,7 @@ where [refTable].[Email] = ?</property>
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [Name], [Sex], [Street], [Surname], [ZipCode] FROM [dbo].[DimClientSt]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [Age], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [Name], [Sex], [Street], [Surname], [ZipCode] FROM [dbo].[DimClientSt]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -945,6 +1002,19 @@ where [refTable].[Email] = ?</property>
                           dataType="System.Int32"
                           name="ColumnType"
                           typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Age]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output].Columns[Age]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1071,7 +1141,7 @@ where [refTable].[Email] = ?</property>
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">4</property>
+                          typeConverter="ColumnType">2</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1096,6 +1166,10 @@ where [refTable].[Email] = ?</property>
                       refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AddressSourceID]"
                       dataType="i4"
                       name="AddressSourceID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Age]"
+                      dataType="i2"
+                      name="Age" />
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ApartmentNumber]"
                       codePage="1250"
@@ -1198,6 +1272,87 @@ where [refTable].[Email] = ?</property>
                   exclusionGroup="1"
                   name="Inferred Member Updates Output"
                   synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Wyliczenie wieku"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Inputs[Derived Column Input].Columns[BirthDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="BirthDate"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[BirthDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output].Columns[Age]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output].Columns[Age]"
+                      name="Age"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I2)[DATEDIFF]("Year",(DT_DBDATE)#{Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[BirthDate]},[GETDATE]())</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)DATEDIFF("Year",(DT_DBDATE)BirthDate,GETDATE())</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -1622,8 +1777,13 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
               name="Derived Column Output"
               startId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
+              refId="Package\Przetwarzanie danych o klientów.Paths[Derived Column Output1]"
               endId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
+              endId="Package\Przetwarzanie danych o klientów\Wyliczenie wieku.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output]" />
             <path
@@ -1666,35 +1826,39 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="274,42"
-          Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
-          TopLeft="109,189.5" />
+          Size="151,42"
+          Id="Package\Przetwarzanie danych o klientów\Scalenie imion"
+          TopLeft="242.5,107.5" />
         <NodeLayout
           Size="298,42"
           Id="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01"
-          TopLeft="97,43.5" />
+          TopLeft="169,5.5" />
         <NodeLayout
-          Size="151,42"
-          Id="Package\Przetwarzanie danych o klientów\Scalenie imion"
-          TopLeft="169.5,120.5" />
+          Size="274,42"
+          Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
+          TopLeft="181,209.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension"
+          TopLeft="210,515.5" />
         <NodeLayout
           Size="284,42"
           Id="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02"
-          TopLeft="104,267.5" />
+          TopLeft="176,311.5" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
-          TopLeft="245.5,85.5">
+          TopLeft="318,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,27.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1705,18 +1869,18 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Derived Column Output]"
-          TopLeft="245.5,162.5">
+          TopLeft="318,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,27"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,19.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1727,18 +1891,18 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
-          TopLeft="246,231.5">
+          TopLeft="318,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,28.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1748,12 +1912,12 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="216,42"
-          Id="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension"
-          TopLeft="138,369.5" />
+          Size="163,42"
+          Id="Package\Przetwarzanie danych o klientów\Wyliczenie wieku"
+          TopLeft="236.5,413.5" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
-          TopLeft="246,309.5">
+          TopLeft="318,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1775,83 +1939,105 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165,42"
-          Id="Package\Przetwarzanie danych o klientów\Insert Destination"
-          TopLeft="35.5000000000001,463.5" />
         <EdgeLayout
-          Id="Package\Przetwarzanie danych o klientów.Paths[New Output]"
-          TopLeft="211.333333333333,411.5">
+          Id="Package\Przetwarzanie danych o klientów.Paths[Derived Column Output1]"
+          TopLeft="318,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-93.3333333333333,52"
+              EndConnector="0,60"
               Start="0,0"
-              End="-93.3333333333333,44.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.0294117647059" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.0294117647059"
-                    Point2="0,21.0294117647059"
-                    Point3="-4,21.0294117647059" />
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Przetwarzanie danych o klientów\Insert Destination"
+          TopLeft="52.6428571428573,616.785714285714" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o klientów.Paths[New Output]"
+          TopLeft="283.333333333333,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148.190476190476,59.2857142857143"
+              Start="0,0"
+              End="-148.190476190476,51.7857142857143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-89.3333333333333,21.0294117647059" />
+                    End="0,19.9758403361345" />
                   <mssgle:CubicBezierSegment
-                    Point1="-89.3333333333333,21.0294117647059"
-                    Point2="-93.3333333333333,21.0294117647059"
-                    Point3="-93.3333333333333,25.0294117647059" />
+                    Point1="0,19.9758403361345"
+                    Point2="0,23.9758403361345"
+                    Point3="-4,23.9758403361345" />
                   <mssgle:LineSegment
-                    End="-93.3333333333333,44.5" />
+                    End="-144.190476190476,23.9758403361345" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-144.190476190476,23.9758403361345"
+                    Point2="-148.190476190476,23.9758403361345"
+                    Point3="-148.190476190476,27.9758403361345" />
+                  <mssgle:LineSegment
+                    End="-148.190476190476,51.7857142857143" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-73.7580533854167,26.0294117647059,54.1827734375,11.43359375"
+              BoundingBox="-101.186624813988,28.9758403361345,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
           Size="173,42"
           Id="Package\Przetwarzanie danych o klientów\OLE DB Command"
-          TopLeft="261.5,463.5" />
+          TopLeft="395.785714285714,624.642857142857" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Changing Attribute Updates Output]"
-          TopLeft="280.666666666667,411.5">
+          TopLeft="352.666666666667,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="67.3333333333333,52"
+              EndConnector="129.619047619048,67.1428571428571"
               Start="0,0"
-              End="67.3333333333333,44.5">
+              End="129.619047619048,59.6428571428571">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.0294117647059" />
+                    End="0,23.1533613445378" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.0294117647059"
-                    Point2="0,21.0294117647059"
-                    Point3="4,21.0294117647059" />
+                    Point1="0,23.1533613445378"
+                    Point2="0,27.1533613445378"
+                    Point3="4,27.1533613445378" />
                   <mssgle:LineSegment
-                    End="63.3333333333333,21.0294117647059" />
+                    End="125.619047619048,27.1533613445378" />
                   <mssgle:CubicBezierSegment
-                    Point1="63.3333333333333,21.0294117647059"
-                    Point2="67.3333333333333,21.0294117647059"
-                    Point3="67.3333333333333,25.0294117647059" />
+                    Point1="125.619047619048,27.1533613445378"
+                    Point2="129.619047619048,27.1533613445378"
+                    Point3="129.619047619048,31.1533613445378" />
                   <mssgle:LineSegment
-                    End="67.3333333333333,44.5" />
+                    End="129.619047619048,59.6428571428571" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-44.8672395833334,26.0294117647059,157.0678125,11.6630859375"
+              BoundingBox="-13.7243824404762,32.1533613445378,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1861,29 +2047,6 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
   <PipelineComponentMetadata
     design-time-name="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01">
     <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Client]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1905,6 +2068,12 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
       &lt;ColumnName&gt;AddressSourceID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Wyliczenie wieku.Outputs[Derived Column Output].Columns[Age]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Age&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]&lt;/IdentificationString&gt;
@@ -1964,7 +2133,7 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
       &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[LastName]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Surname&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]&lt;/IdentificationString&gt;
@@ -1989,6 +2158,29 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Client]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
