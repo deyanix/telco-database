@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadDWDimProduct"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{9607026C-6855-4390-9785-634BF22AC045}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{212091D5-DF3C-47E3-AF87-BB9AFA0E4F7C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -288,8 +288,10 @@
                       lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CategoryName]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[Price]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Price]" />
                   </inputColumns>
@@ -329,8 +331,10 @@
                       name="CategoryName" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      dataType="i4"
-                      name="Price" />
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
                       dataType="bool"
@@ -382,7 +386,8 @@
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProduct] SET [DateTo] = ?,
-[Active] = 0 WHERE [ProductSourceID] = ? AND [DateTo] IS NULL</property>
+[Active] = 0
+ WHERE [ProductSourceID] = ? AND [DateTo] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -655,7 +660,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT ProductSourceID, dbo.DimProductSt.Name, CategorySourceID, DCS.Name as CategoryName, Price FROM dbo.DimProductSt LEFT JOIN dbo.DimCategorySt DCS on DimProductSt.CategorySourceID = DCS.CategoryID</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -672,7 +677,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -733,33 +738,14 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[Price]"
-                      dataType="i4"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[Price]"
                       lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[Price]"
                       name="Price"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[EanCode]"
-                      codePage="1250"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[EanCode]"
-                      length="13"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[EanCode]"
-                      name="EanCode"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
-                      length="10"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]"
-                      name="CreationDate"
+                      precision="18"
+                      scale="2"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -782,23 +768,14 @@
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[CategoryName]"
                       dataType="wstr"
-                      length="250"
+                      length="50"
                       name="CategoryName" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[Price]"
-                      dataType="i4"
-                      name="Price" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[EanCode]"
-                      codePage="1250"
-                      dataType="str"
-                      length="13"
-                      name="EanCode" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
-                      dataType="wstr"
-                      length="10"
-                      name="CreationDate" />
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -827,27 +804,16 @@
                     <outputColumn
                       refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[CategoryName]"
                       dataType="wstr"
-                      length="250"
+                      length="50"
                       lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[CategoryName]"
                       name="CategoryName" />
                     <outputColumn
                       refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[Price]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[Price]"
-                      name="Price" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[EanCode]"
-                      codePage="1250"
-                      dataType="str"
-                      length="13"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[EanCode]"
-                      name="EanCode" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
-                      name="CreationDate" />
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                     <outputColumn
                       refId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -970,8 +936,10 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Price]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
                       externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Price]"
                       lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[Price]">
                       <properties>
@@ -1015,8 +983,10 @@
                       name="Name" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Price]"
-                      dataType="i4"
-                      name="Price" />
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ProductSourceID]"
                       dataType="i4"
@@ -1153,8 +1123,10 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Price]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
                       lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[Price]">
                       <properties>
                         <property
@@ -1162,35 +1134,6 @@
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[EanCode]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="13"
-                      cachedName="EanCode"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[EanCode]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[EanCode]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[CreationDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="CreationDate"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CreationDate]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1259,8 +1202,10 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Price]"
-                      cachedDataType="i4"
+                      cachedDataType="numeric"
                       cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
                       lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[Price]">
                       <properties>
                         <property
@@ -1268,35 +1213,6 @@
                           dataType="System.Int32"
                           description="Output column lineage ID"
                           name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[EanCode]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="13"
-                      cachedName="EanCode"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[EanCode]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[EanCode]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[CreationDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="CreationDate"
-                      lineageId="Package\Data Flow Task\Pobranie danych o produktach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CreationDate]}</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1341,22 +1257,11 @@
                       name="CategoryName" />
                     <outputColumn
                       refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Price]"
-                      dataType="i4"
+                      dataType="numeric"
                       lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Price]"
-                      name="Price" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[EanCode]"
-                      codePage="1250"
-                      dataType="str"
-                      length="13"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[EanCode]"
-                      name="EanCode" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CreationDate]"
-                      dataType="wstr"
-                      length="10"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CreationDate]"
-                      name="CreationDate" />
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>

@@ -12,29 +12,12 @@
   DTS:ObjectName="LoadODSdimClient"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{CA8B87AF-2224-4429-B30A-7199B6640C5D}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{2D83CA65-3B7C-4E6E-8CD3-7F7ED7F86979}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\Czyszczenie - klienci"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="czyszczenie danych na temat klientów"
-      DTS:DTSID="{f232a305-48b5-4e14-b2cc-6f96620bbce1}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Czyszczenie - klienci"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}"
-          SQLTask:SqlStatementSource="DELETE FROM DimClientSt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Przetwarzanie danych o klientów"
       DTS:CreationName="Microsoft.Pipeline"
@@ -289,6 +272,521 @@ where [refTable].[Email] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Przetwarzanie danych o klientów\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimClientSt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie danych o klientów\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Sex]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Sex"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[AddressId]"
+                      cachedDataType="i4"
+                      cachedName="AddressId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressSourceID]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[AddressId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Street]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Street"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Street]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Street]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[BuildingNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="BuildingNumber"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BuildingNumber]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[BuildingNumber]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[ApartmentNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ApartmentNumber"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ApartmentNumber]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[ZipCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ZipCode"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[ClientId]"
+                      cachedDataType="i4"
+                      cachedName="ClientId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientSourceID]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ClientId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[RegistrationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="RegistrationDate"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[RegistrationDate]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="126"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[LastName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
+                      dataType="wstr"
+                      length="16"
+                      name="Sex" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      dataType="i2"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressSourceID]"
+                      dataType="i4"
+                      name="AddressSourceID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Street]"
+                      dataType="wstr"
+                      length="30"
+                      name="Street" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BuildingNumber]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="BuildingNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ApartmentNumber]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="ApartmentNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="ZipCode" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientSourceID]"
+                      dataType="i4"
+                      name="ClientSourceID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RegistrationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="61"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      dataType="wstr"
+                      length="30"
+                      name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="CreationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModificationDate]"
+                      dataType="dbTimeStamp"
+                      name="ModificationDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie danych o klientów\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClientSt] SET [ApartmentNumber] = ?,[BuildingNumber] = ?,[City] = ?,[Country] = ?,[Name] = ?,[Sex] = ?,[Street] = ?,[ZipCode] = ? WHERE [ClientSourceID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ApartmentNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ApartmentNumber"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[BuildingNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="BuildingNumber"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[BuildingNumber]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ClientId]"
+                      cachedDataType="i4"
+                      cachedName="ClientId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ClientId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="126"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Sex]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Sex"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Street]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Street"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Street]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ZipCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ZipCode"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="61"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="16"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="wstr"
+                      length="30"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="i4"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o klientów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie danych o klientów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Przetwarzanie danych o klientów\Scalenie imion"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -377,254 +875,329 @@ where [refTable].[Email] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Wpisywanie klientów do ODS"
-              usesDispositions="true"
-              version="4">
+              refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimClientSt]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
+                  description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [Name], [Sex], [Street], [Surname], [ZipCode] FROM [dbo].[DimClientSt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
                   name="DefaultCodePage">1250</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Connections[OleDbConnection]"
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Connections[LookupConnection]"
                   connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[Sex]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="Sex"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[AddressId]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[AddressId]"
                       cachedDataType="i4"
                       cachedName="AddressId"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[AddressSourceID]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[AddressId]" />
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AddressSourceID]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[AddressId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[ZipCode]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="6"
-                      cachedName="ZipCode"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[ClientId]"
-                      cachedDataType="i4"
-                      cachedName="ClientId"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ClientSourceID]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ClientId]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[ApartmentNumber]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ApartmentNumber]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="6"
                       cachedName="ApartmentNumber"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ApartmentNumber]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]" />
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ApartmentNumber]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[BuildingNumber]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[BuildingNumber]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="6"
                       cachedName="BuildingNumber"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[BuildingNumber]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[BuildingNumber]" />
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[BuildingNumber]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[BuildingNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[Street]"
-                      cachedDataType="wstr"
-                      cachedLength="30"
-                      cachedName="Street"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Street]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Street]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[City]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[City]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="City"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[City]" />
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[City]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[Country]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ClientId]"
+                      cachedDataType="i4"
+                      cachedName="ClientId"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ClientSourceID]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ClientId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Country]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Country"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]" />
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Country]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
                     <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[RegistrationDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="RegistrationDate"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[RegistrationDate]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[LastName]"
-                      cachedDataType="wstr"
-                      cachedLength="30"
-                      cachedName="LastName"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[LastName]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].Columns[Name]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Name]"
                       cachedDataType="wstr"
                       cachedLength="126"
                       cachedName="Name"
-                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output].Columns[Name]" />
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output].Columns[Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Sex]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="Sex"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Sex]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Street]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Street"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Street]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Street]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Surname]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ZipCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ZipCode"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ZipCode]"
+                      lineageId="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
-                      dataType="wstr"
-                      length="16"
-                      name="Sex" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
-                      dataType="i2"
-                      name="Age" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[AddressSourceID]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[AddressSourceID]"
                       dataType="i4"
                       name="AddressSourceID" />
                     <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
-                      dataType="wstr"
-                      length="10"
-                      name="RegistrationDate" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
-                      dataType="wstr"
-                      length="50"
-                      name="Country" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      dataType="wstr"
-                      length="50"
-                      name="City" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Street]"
-                      dataType="wstr"
-                      length="30"
-                      name="Street" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[BuildingNumber]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
-                      name="BuildingNumber" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ApartmentNumber]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ApartmentNumber]"
                       codePage="1250"
                       dataType="str"
                       length="6"
                       name="ApartmentNumber" />
                     <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[BuildingNumber]"
                       codePage="1250"
                       dataType="str"
                       length="6"
-                      name="ZipCode" />
+                      name="BuildingNumber" />
                     <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ClientSourceID]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ClientSourceID]"
                       dataType="i4"
                       name="ClientSourceID" />
                     <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Name]"
                       dataType="wstr"
                       length="61"
                       name="Name" />
                     <externalMetadataColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Surname]"
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Sex]"
+                      dataType="wstr"
+                      length="16"
+                      name="Sex" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Street]"
+                      dataType="wstr"
+                      length="30"
+                      name="Street" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Surname]"
                       dataType="wstr"
                       length="30"
                       name="Surname" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ZipCode]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      name="ZipCode" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
                   exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -1034,6 +1607,11 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
           </components>
           <paths>
             <path
+              refId="Package\Przetwarzanie danych o klientów.Paths[Changing Attribute Updates Output]"
+              endId="Package\Przetwarzanie danych o klientów\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
               refId="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
               endId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Inputs[Lookup Input]"
               name="Data Conversion Output"
@@ -1045,9 +1623,14 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
               startId="Package\Przetwarzanie danych o klientów\Scalenie imion.Outputs[Derived Column Output]" />
             <path
               refId="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
-              endId="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS.Inputs[OLE DB Destination Input]"
+              endId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
               name="Lookup Match Output"
               startId="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Przetwarzanie danych o klientów.Paths[New Output]"
+              endId="Package\Przetwarzanie danych o klientów\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension.Outputs[New Output]" />
             <path
               refId="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
               endId="Package\Przetwarzanie danych o klientów\Scalenie imion.Inputs[Derived Column Input]"
@@ -1058,16 +1641,6 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{6F96CF36-5587-4188-A248-12D77110DE75}"
-      DTS:From="Package\Czyszczenie - klienci"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\Przetwarzanie danych o klientów" />
-  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1079,37 +1652,11 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="220,42"
-          Id="Package\Czyszczenie - klienci"
-          TopLeft="330.833320187198,163.800001301765" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="268,42"
           Id="Package\Przetwarzanie danych o klientów"
           TopLeft="306.666654480829,250.466668657197" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="440.749987334014,205.800001301765">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44.6666673554323"
-              Start="0,0"
-              End="0,37.1666673554323">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.1666673554323" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1119,39 +1666,35 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="249,42"
-          Id="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS"
-          TopLeft="308.125004842877,380.116666906012" />
-        <NodeLayout
-          Size="284,42"
-          Id="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02"
-          TopLeft="292.166655176216,299.466668140624" />
+          Size="274,42"
+          Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
+          TopLeft="109,189.5" />
         <NodeLayout
           Size="298,42"
           Id="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01"
-          TopLeft="145.958333573408,13.6833330526617" />
-        <NodeLayout
-          Size="274,42"
-          Id="Package\Przetwarzanie danych o klientów\Dostosowanie kodowania tekstów"
-          TopLeft="160.333327637779,161.566667438083" />
+          TopLeft="97,43.5" />
         <NodeLayout
           Size="151,42"
           Id="Package\Przetwarzanie danych o klientów\Scalenie imion"
-          TopLeft="222.166641268466,85.8666672934426" />
+          TopLeft="169.5,120.5" />
+        <NodeLayout
+          Size="284,42"
+          Id="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02"
+          TopLeft="104,267.5" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[OLE DB Source Output]"
-          TopLeft="296.312487420937,55.6833330526617">
+          TopLeft="245.5,85.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30.1833342407809"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,22.6833342407809">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.6833342407809" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1161,43 +1704,19 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
-          TopLeft="433.395830009547,341.466668140624">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.649998765388"
-              Start="0,0"
-              End="0,31.149998765388">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.149998765388" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.77031188269399,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Derived Column Output]"
-          TopLeft="297.499984453123,127.866667293443">
+          TopLeft="245.5,162.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.7000001446406"
+              EndConnector="0,27"
               Start="0,0"
-              End="0,26.2000001446406">
+              End="0,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.2000001446406" />
+                    End="0,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1208,30 +1727,18 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie danych o klientów.Paths[Data Conversion Output]"
-          TopLeft="297.333327637779,203.566667438083">
+          TopLeft="246,231.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="136.833327538437,95.9000007025408"
+              EndConnector="0,36"
               Start="0,0"
-              End="136.833327538437,88.4000007025408">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.9500003512704" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43.9500003512704"
-                    Point2="0,47.9500003512704"
-                    Point3="4,47.9500003512704" />
-                  <mssgle:LineSegment
-                    End="132.833327538437,47.9500003512704" />
-                  <mssgle:CubicBezierSegment
-                    Point1="132.833327538437,47.9500003512704"
-                    Point2="136.833327538437,47.9500003512704"
-                    Point3="136.833327538437,51.9500003512704" />
-                  <mssgle:LineSegment
-                    End="136.833327538437,88.4000007025408" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1240,32 +1747,117 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension"
+          TopLeft="138,369.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o klientów.Paths[Lookup Match Output]"
+          TopLeft="246,309.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Przetwarzanie danych o klientów\Insert Destination"
+          TopLeft="35.5000000000001,463.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o klientów.Paths[New Output]"
+          TopLeft="211.333333333333,411.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93.3333333333333,52"
+              Start="0,0"
+              End="-93.3333333333333,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.0294117647059" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.0294117647059"
+                    Point2="0,21.0294117647059"
+                    Point3="-4,21.0294117647059" />
+                  <mssgle:LineSegment
+                    End="-89.3333333333333,21.0294117647059" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-89.3333333333333,21.0294117647059"
+                    Point2="-93.3333333333333,21.0294117647059"
+                    Point3="-93.3333333333333,25.0294117647059" />
+                  <mssgle:LineSegment
+                    End="-93.3333333333333,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.7580533854167,26.0294117647059,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Przetwarzanie danych o klientów\OLE DB Command"
+          TopLeft="261.5,463.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie danych o klientów.Paths[Changing Attribute Updates Output]"
+          TopLeft="280.666666666667,411.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.3333333333333,52"
+              Start="0,0"
+              End="67.3333333333333,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.0294117647059" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.0294117647059"
+                    Point2="0,21.0294117647059"
+                    Point3="4,21.0294117647059" />
+                  <mssgle:LineSegment
+                    End="63.3333333333333,21.0294117647059" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.3333333333333,21.0294117647059"
+                    Point2="67.3333333333333,21.0294117647059"
+                    Point3="67.3333333333333,25.0294117647059" />
+                  <mssgle:LineSegment
+                    End="67.3333333333333,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-44.8672395833334,26.0294117647059,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Client]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Przetwarzanie danych o klientów\Ładowanie danych o klientach SRC01">
     <Properties>
@@ -1275,15 +1867,128 @@ INNER JOIN Address ON Client.AddressId = Address.AddressId;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie danych o klientów\Wpisywanie klientów do ODS">
+    design-time-name="Package\Przetwarzanie danych o klientów\Dodanie danych o klientach z SR02">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Client]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Przetwarzanie danych o klientów\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimClientSt]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[AddressId]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;AddressSourceID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ApartmentNumber]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ApartmentNumber&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[BuildingNumber]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;BuildingNumber&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[City]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;City&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ClientId]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ClientSourceID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Country]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Country&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Scalenie imion.Outputs[Derived Column Output].Columns[Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Dodanie danych o klientach z SR02.Outputs[Lookup Match Output].Columns[RegistrationDate]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;RegistrationDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Sex]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Sex&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[Street]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Street&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[LastName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Surname&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Ładowanie danych o klientach SRC01.Outputs[OLE DB Source Output].Columns[ZipCode]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ZipCode&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
