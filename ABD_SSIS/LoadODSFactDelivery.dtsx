@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadODSFactDelivery"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{E8C6E3F5-C251-4206-B820-2728087ABC94}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A9E42732-2D58-447B-AECD-C5C672E12950}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -164,6 +164,12 @@
                       cachedName="ShopId"
                       externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ShopId]"
                       lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ShopId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Quantity]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -196,6 +202,10 @@
                       refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ShopId]"
                       dataType="i4"
                       name="ShopId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -250,7 +260,7 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dbo.[Delivery].DeliveryId,dbo.[Delivery].Amount, dbo.[Delivery].Date, dbo.[Delivery].DistributorId,dbo.[Delivery].SupplyId,
-dbo.[Supply].ProductId, dbo.[Supply].ShopId
+dbo.[Supply].ProductId, dbo.[Supply].ShopId, dbo.[Supply].Quantity
 FROM     dbo.[Delivery]
 INNER JOIN dbo.[Supply] on dbo.[Delivery].SupplyId = dbo.[Supply].SupplyId;</property>
                 <property
@@ -353,6 +363,15 @@ INNER JOIN dbo.[Supply] on dbo.[Delivery].SupplyId = dbo.[Supply].SupplyId;</pro
                       lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[ShopId]"
                       name="ShopId"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -385,6 +404,10 @@ INNER JOIN dbo.[Supply] on dbo.[Delivery].SupplyId = dbo.[Supply].SupplyId;</pro
                       refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[ShopId]"
                       dataType="i4"
                       name="ShopId" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i2"
+                      name="Quantity" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -428,6 +451,11 @@ INNER JOIN dbo.[Supply] on dbo.[Delivery].SupplyId = dbo.[Supply].SupplyId;</pro
                       dataType="i4"
                       lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ShopId]"
                       name="ShopId" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i2"
+                      lineageId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
                     <outputColumn
                       refId="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -530,13 +558,13 @@ INNER JOIN dbo.[Supply] on dbo.[Delivery].SupplyId = dbo.[Supply].SupplyId;</pro
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="217,42"
-          Id="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS"
-          TopLeft="159.386909571668,253.792857251337" />
-        <NodeLayout
           Size="285,42"
           Id="Package\Przetwarzanie danych o dostawach\Ładowanie danych o dostawach  z SRC01"
           TopLeft="123.958333573408,6.6833330526617" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Przetwarzanie danych o dostawach\Wpisywanie dostaw do ODS"
+          TopLeft="159.386909571668,253.792857251337" />
         <EdgeLayout
           Id="Package\Przetwarzanie danych o dostawach.Paths[OLE DB Source Output]"
           TopLeft="267.172621572538,48.6833330526617">
