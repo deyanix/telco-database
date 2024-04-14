@@ -5,15 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="GLADOS"
   DTS:CreatorName="GLADOS\deyanix"
-  DTS:DTSID="{9EBCDC1C-F8CB-42CD-9F84-FC965A620382}"
+  DTS:DTSID="{6DA39C5F-95A5-4DB7-8885-2B27C5CEAD2B}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1045"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="LoadODSDimProduct"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="114"
-  DTS:VersionGUID="{3A2940CA-BBA6-481A-82F8-3B1C492EF1AB}">
+  DTS:VersionBuild="123"
+  DTS:VersionGUID="{65F80F95-26C1-4B04-B9A3-AA4AAC3CEDC7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -51,7 +51,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}"
-          SQLTask:SqlStatementSource="DELETE FROM DimProductSt;DELETE FROM DimCategorySt;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM DimCategorySt;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1114,6 +1114,11 @@ FROM         Card INNER JOIN
                       cachedLength="13"
                       cachedName="EanCode_WSTR"
                       lineageId="Package\Przetwarzanie produktów\Skrócenie tekstów.Outputs[Data Conversion Output].Columns[EanCode_WSTR]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input].Columns[Price]"
+                      cachedDataType="r8"
+                      cachedName="Price"
+                      lineageId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC3.Outputs[ODBC Source Output].Columns[Price]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1169,6 +1174,27 @@ FROM         Card INNER JOIN
                           name="FastParse">false</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Price_WSTR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Price_WSTR]"
+                      name="Price_WSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Przetwarzanie produktów\Ładowanie produktów z SRC3.Outputs[ODBC Source Output].Columns[Price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1189,6 +1215,188 @@ FROM         Card INNER JOIN
                       refId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie produktów\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProductSt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie produktów\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductSourceID]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].Columns[CategoryID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CategorySourceID]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].Columns[Price]"
+                      cachedDataType="numeric"
+                      cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].Columns[EanCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="EanCode"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EanCode]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[EanCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductSourceID]"
+                      dataType="i4"
+                      name="ProductSourceID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CategorySourceID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="24"
+                      name="CategorySourceID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      dataType="wstr"
+                      length="250"
+                      name="CategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EanCode]"
+                      codePage="1250"
+                      dataType="str"
+                      length="13"
+                      name="EanCode" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="CreationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModificationDate]"
+                      dataType="dbTimeStamp"
+                      name="ModificationDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1250,8 +1458,10 @@ FROM         Card INNER JOIN
                       lineageId="Package\Przetwarzanie produktów\Sort 2.Outputs[Sort Output].Columns[ProductType]" />
                     <inputColumn
                       refId="Package\Przetwarzanie produktów\Merge Join.Inputs[Merge Join Left Input].Columns[Price]"
-                      cachedDataType="cy"
+                      cachedDataType="numeric"
                       cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
                       lineageId="Package\Przetwarzanie produktów\Sort 2.Outputs[Sort Output].Columns[Price]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -1322,9 +1532,11 @@ FROM         Card INNER JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Price]"
-                      dataType="cy"
+                      dataType="numeric"
                       lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Price]"
-                      name="Price">
+                      name="Price"
+                      precision="18"
+                      scale="2">
                       <properties>
                         <property
                           containsID="true"
@@ -1378,6 +1590,184 @@ FROM         Card INNER JOIN
                           name="InputColumnID">#{Package\Przetwarzanie produktów\Merge Join.Inputs[Merge Join Right Input].Columns[Name_WSTR]}</property>
                       </properties>
                     </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie produktów\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProductSt] SET [CategorySourceID] = ?,[EanCode] = ?,[Name] = ?,[Price] = ? WHERE [ProductSourceID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie produktów\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].Columns[CategoryID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].Columns[EanCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="EanCode"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[EanCode]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].Columns[Price]"
+                      cachedDataType="numeric"
+                      cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[ProductId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1250"
+                      dataType="str"
+                      length="24"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1250"
+                      dataType="str"
+                      length="13"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="250"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="numeric"
+                      name="Param_3"
+                      precision="18"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Przetwarzanie produktów\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1507,6 +1897,223 @@ FROM         Card INNER JOIN
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Przetwarzanie produktów\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CategorySourceID], [EanCode], [Name], [Price], [ProductSourceID] FROM [dbo].[DimProductSt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[CategoryID]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="24"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CategorySourceID]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[EanCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="EanCode"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EanCode]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[EanCode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Name]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Price]"
+                      cachedDataType="numeric"
+                      cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Price]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Price]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      externalMetadataColumnId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ProductSourceID]"
+                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[ProductId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CategorySourceID]"
+                      codePage="1250"
+                      dataType="str"
+                      length="24"
+                      name="CategorySourceID" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EanCode]"
+                      codePage="1250"
+                      dataType="str"
+                      length="13"
+                      name="EanCode" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ProductSourceID]"
+                      dataType="i4"
+                      name="ProductSourceID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -1685,6 +2292,23 @@ FROM         Card INNER JOIN
                           name="NewSortKeyPosition">1</property>
                       </properties>
                     </inputColumn>
+                    <inputColumn
+                      refId="Package\Przetwarzanie produktów\Sort 1.Inputs[Sort Input].Columns[Price_WSTR]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Price_WSTR"
+                      lineageId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Price_WSTR]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1820,6 +2444,20 @@ FROM         Card INNER JOIN
                           name="SortColumnId">#{Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[EanCode_STR]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Przetwarzanie produktów\Sort 1.Outputs[Sort Output].Columns[Price_WSTR]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Przetwarzanie produktów\Sort 1.Outputs[Sort Output].Columns[Price_WSTR]"
+                      name="Price_WSTR">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output].Columns[Price_WSTR]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1884,8 +2522,10 @@ FROM         Card INNER JOIN
                     </inputColumn>
                     <inputColumn
                       refId="Package\Przetwarzanie produktów\Sort 2.Inputs[Sort Input].Columns[Price]"
-                      cachedDataType="cy"
+                      cachedDataType="numeric"
                       cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
                       lineageId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].Columns[Price]">
                       <properties>
                         <property
@@ -1956,9 +2596,11 @@ FROM         Card INNER JOIN
                     </outputColumn>
                     <outputColumn
                       refId="Package\Przetwarzanie produktów\Sort 2.Outputs[Sort Output].Columns[Price]"
-                      dataType="cy"
+                      dataType="numeric"
                       lineageId="Package\Przetwarzanie produktów\Sort 2.Outputs[Sort Output].Columns[Price]"
-                      name="Price">
+                      name="Price"
+                      precision="18"
+                      scale="2">
                       <properties>
                         <property
                           containsID="true"
@@ -1983,182 +2625,6 @@ FROM         Card INNER JOIN
                           name="SortColumnId">#{Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].Columns[Ean]}</property>
                       </properties>
                     </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Wpisywanie produktów do ODS"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimProductSt]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1250</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Connections[OleDbConnection]"
-                  connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[Price]"
-                      cachedDataType="cy"
-                      cachedName="Price"
-                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Price]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[ProductId]"
-                      cachedDataType="i4"
-                      cachedName="ProductId"
-                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ProductSourceID]"
-                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[ProductId]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[EanCode]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="13"
-                      cachedName="EanCode"
-                      cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[EanCode]"
-                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[EanCode]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="200"
-                      cachedName="Name"
-                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[Name]" />
-                    <inputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].Columns[CategoryID]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="24"
-                      cachedName="CategoryID"
-                      externalMetadataColumnId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategorySourceID]"
-                      lineageId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output].Columns[CategoryID]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      dataType="wstr"
-                      length="250"
-                      name="Name" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[ProductSourceID]"
-                      dataType="i4"
-                      name="ProductSourceID" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategorySourceID]"
-                      codePage="1250"
-                      dataType="str"
-                      length="24"
-                      name="CategorySourceID" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
-                      dataType="wstr"
-                      length="250"
-                      name="CategoryName" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      dataType="numeric"
-                      name="Price"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[EanCode]"
-                      codePage="1250"
-                      dataType="str"
-                      length="13"
-                      name="EanCode" />
-                    <externalMetadataColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input].ExternalColumns[CreationDate]"
-                      dataType="wstr"
-                      length="10"
-                      name="CreationDate" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2247,12 +2713,14 @@ FROM         Card INNER JOIN
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].Columns[Price]"
-                      dataType="cy"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].ExternalColumns[Price]"
                       lineageId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].Columns[Price]"
                       name="Price"
+                      precision="18"
+                      scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].Columns[Ean]"
@@ -2280,8 +2748,10 @@ FROM         Card INNER JOIN
                       name="ProductType" />
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].ExternalColumns[Price]"
-                      dataType="cy"
-                      name="Price" />
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Output].ExternalColumns[Ean]"
                       codePage="1250"
@@ -2309,9 +2779,11 @@ FROM         Card INNER JOIN
                       name="ProductType" />
                     <outputColumn
                       refId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Error Output].Columns[Price]"
-                      dataType="cy"
+                      dataType="numeric"
                       lineageId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Error Output].Columns[Price]"
-                      name="Price" />
+                      name="Price"
+                      precision="18"
+                      scale="2" />
                     <outputColumn
                       refId="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2514,6 +2986,11 @@ CategoryID, Name, Price*100 as Price, EanCode
           </components>
           <paths>
             <path
+              refId="Package\Przetwarzanie produktów.Paths[Changing Attribute Updates Output]"
+              endId="Package\Przetwarzanie produktów\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
               refId="Package\Przetwarzanie produktów.Paths[Data Conversion Output]"
               endId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Inputs[Data Conversion Input]"
               name="Data Conversion Output"
@@ -2525,9 +3002,14 @@ CategoryID, Name, Price*100 as Price, EanCode
               startId="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Przetwarzanie produktów.Paths[Merge Join Output]"
-              endId="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS.Inputs[OLE DB Destination Input]"
+              endId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
               name="Merge Join Output"
               startId="Package\Przetwarzanie produktów\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Przetwarzanie produktów.Paths[New Output]"
+              endId="Package\Przetwarzanie produktów\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\Przetwarzanie produktów\Slowly Changing Dimension.Outputs[New Output]" />
             <path
               refId="Package\Przetwarzanie produktów.Paths[ODBC Source Output]"
               endId="Package\Przetwarzanie produktów\Skrócenie tekstów.Inputs[Data Conversion Input]"
@@ -2885,7 +3367,9 @@ CategoryID, Name, Price*100 as Price, EanCode
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2931,7 +3415,9 @@ CategoryID, Name, Price*100 as Price, EanCode
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2967,143 +3453,57 @@ CategoryID, Name, Price*100 as Price, EanCode
     design-time-name="Package\Przetwarzanie produktów">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Przetwarzanie produktów\Merge Join"
-          TopLeft="370.5,378" />
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="227,42"
           Id="Package\Przetwarzanie produktów\Ładowanie produktów z SRC1"
-          TopLeft="504.884615384615,54.7307692307692" />
+          TopLeft="5.50000000000006,209.5" />
         <NodeLayout
           Size="108,42"
           Id="Package\Przetwarzanie produktów\Sort 1"
-          TopLeft="227,279" />
+          TopLeft="361,311.5" />
         <NodeLayout
           Size="164,42"
           Id="Package\Przetwarzanie produktów\Skrócenie tekstów"
-          TopLeft="193.1,138.5" />
+          TopLeft="333,107.5" />
         <NodeLayout
           Size="227,42"
           Id="Package\Przetwarzanie produktów\Ładowanie produktów z SRC3"
-          TopLeft="160.246153846154,51.8" />
+          TopLeft="301.5,5.5" />
         <NodeLayout
           Size="108,42"
           Id="Package\Przetwarzanie produktów\Sort 2"
-          TopLeft="569.5,270.5" />
+          TopLeft="192,311.5" />
         <NodeLayout
           Size="244,42"
           Id="Package\Przetwarzanie produktów\Dostosowanie kodowania tekstów"
-          TopLeft="151.9,211.6" />
-        <NodeLayout
-          Size="233,42"
-          Id="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS"
-          TopLeft="321.5,538" />
-        <EdgeLayout
-          Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output]"
-          TopLeft="274.5,180.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.1"
-              Start="0,0"
-              End="0,23.6">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.6" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Przetwarzanie produktów.Paths[Sort Output1]"
-          TopLeft="623.5,312.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-165.666666666667,65.5"
-              Start="0,0"
-              End="-165.666666666667,58">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.832838038633" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.832838038633"
-                    Point2="0,38.832838038633"
-                    Point3="-4,38.832838038633" />
-                  <mssgle:LineSegment
-                    End="-161.666666666667,38.832838038633" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-161.666666666667,38.832838038633"
-                    Point2="-165.666666666667,38.832838038633"
-                    Point3="-165.666666666667,42.832838038633" />
-                  <mssgle:LineSegment
-                    End="-165.666666666667,58" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Przetwarzanie produktów.Paths[Sort Output]"
-          TopLeft="281,321">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="135.166666666667,57"
-              Start="0,0"
-              End="135.166666666667,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.7934621099554" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.7934621099554"
-                    Point2="0,33.7934621099554"
-                    Point3="4,33.7934621099554" />
-                  <mssgle:LineSegment
-                    End="131.166666666667,33.7934621099554" />
-                  <mssgle:CubicBezierSegment
-                    Point1="131.166666666667,33.7934621099554"
-                    Point2="135.166666666667,33.7934621099554"
-                    Point3="135.166666666667,37.7934621099554" />
-                  <mssgle:LineSegment
-                    End="135.166666666667,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="293,209.5" />
         <EdgeLayout
           Id="Package\Przetwarzanie produktów.Paths[OLE DB Source Output]"
-          TopLeft="620.942307692308,96.7307692307692">
+          TopLeft="119,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,173.769230769231"
+              EndConnector="127,60"
               Start="0,0"
-              End="0,166.269230769231">
+              End="127,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,166.269230769231" />
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="123,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123,30"
+                    Point2="127,30"
+                    Point3="127,34" />
+                  <mssgle:LineSegment
+                    End="127,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3114,18 +3514,18 @@ CategoryID, Name, Price*100 as Price, EanCode
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Przetwarzanie produktów.Paths[ODBC Source Output]"
-          TopLeft="274.423076923077,93.8">
+          TopLeft="415,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.7"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,37.2">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.2" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3135,49 +3535,225 @@ CategoryID, Name, Price*100 as Price, EanCode
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Przetwarzanie produktów.Paths[Merge Join Output]"
-          TopLeft="437.5,420">
+          Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output1]"
+          TopLeft="415,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,118"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,110.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,110.5" />
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output]"
+          TopLeft="415,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Przetwarzanie produktów\Merge Join"
+          TopLeft="348.5,413.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[Sort Output]"
+          TopLeft="415,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.8333333333333,60"
+              Start="0,0"
+              End="20.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5720653789004"
+                    Point2="0,35.5720653789004"
+                    Point3="4,35.5720653789004" />
+                  <mssgle:LineSegment
+                    End="16.8333333333333,35.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.8333333333333,35.5720653789004"
+                    Point2="20.8333333333333,35.5720653789004"
+                    Point3="20.8333333333333,39.5720653789004" />
+                  <mssgle:LineSegment
+                    End="20.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[Sort Output1]"
+          TopLeft="246,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148.166666666667,60"
+              Start="0,0"
+              End="148.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5720653789004"
+                    Point2="0,35.5720653789004"
+                    Point3="4,35.5720653789004" />
+                  <mssgle:LineSegment
+                    End="144.166666666667,35.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="144.166666666667,35.5720653789004"
+                    Point2="148.166666666667,35.5720653789004"
+                    Point3="148.166666666667,39.5720653789004" />
+                  <mssgle:LineSegment
+                    End="148.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Przetwarzanie produktów\Slowly Changing Dimension"
+          TopLeft="307,515.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[Merge Join Output]"
+          TopLeft="415,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Przetwarzanie produktów\Insert Destination"
+          TopLeft="102.5,617.5" />
+        <EdgeLayout
+          Id="Package\Przetwarzanie produktów.Paths[New Output]"
+          TopLeft="380.333333333333,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.333333333333,60"
+              Start="0,0"
+              End="-195.333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2647058823529"
+                    Point2="0,24.2647058823529"
+                    Point3="-4,24.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-191.333333333333,24.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.333333333333,24.2647058823529"
+                    Point2="-195.333333333333,24.2647058823529"
+                    Point3="-195.333333333333,28.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-195.333333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,47.25,16,16"
+              BoundingBox="-124.758053385417,29.2647058823529,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Przetwarzanie produktów\OLE DB Command"
+          TopLeft="328.5,617.5" />
         <EdgeLayout
-          Id="Package\Przetwarzanie produktów.Paths[Data Conversion Output1]"
-          TopLeft="277.45,253.6">
+          Id="Package\Przetwarzanie produktów.Paths[Changing Attribute Updates Output]"
+          TopLeft="449.666666666667,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.4"
+              EndConnector="-34.6666666666666,60"
               Start="0,0"
-              End="0,17.9">
+              End="-34.6666666666666,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.9" />
+                    End="0,20.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2647058823529"
+                    Point2="0,24.2647058823529"
+                    Point3="-4,24.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-30.6666666666666,24.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.6666666666666,24.2647058823529"
+                    Point2="-34.6666666666666,24.2647058823529"
+                    Point3="-34.6666666666666,28.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-34.6666666666666,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-95.8672395833333,29.2647058823529,157.0678125,11.6630859375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3205,15 +3781,63 @@ CategoryID, Name, Price*100 as Price, EanCode
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Przetwarzanie produktów\Wpisywanie produktów do ODS">
+    design-time-name="Package\Przetwarzanie produktów\Slowly Changing Dimension">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
+        <Name>SCDMetadata</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimProductSt]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[CategoryID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CategorySourceID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[EanCode]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EanCode&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[Price]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Price&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[ProductId]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ProductSourceID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

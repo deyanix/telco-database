@@ -26,11 +26,10 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">GLADOS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="iyFVdeqaPds=" SSIS:IV="4h98O9H7OWi9MYzORwZ/wA==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">/ZFVyLXobjmyboh1aP3kJAZA2OkhEseR40MLo/sjgKaBNfRHsGznDOj/hiDiLdU3zUARMbyCBYosPCMp1w2hHpTt9L4Owjnw5x29iC48uuWXYAcQBU7EHtVT7oZAHhChZYq0ws0lQ/5/hc0cwuaLmiRuleKgjIMurHyaTm9L1kObTEjZmQYoskhY9bz3UOns</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1" SSIS:Salt="8yf65m0furU=" SSIS:IV="me9CWZqz8zavA2QHK4fyFw==" SSIS:Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc">vmfALD5WBOp3xAMjk086RcdmNM8zwYGFYtTf3ssZUSk7kECEsy7aS45+o4unucvwj+g1PuviVwChIWkvXRmZH7NdJi6ZDkwvN6eUJ7WHvmykwBeQ41R+ipLrGFXBDzql6B69BLw5VUZi9nYaamDh9dPSAJyqXVEEUd108XE6DuWjp4daB4z7lSac8Zujqi20</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Package.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSFactScore.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSFactSale.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSFactDelivery.dtsx" SSIS:EntryPoint="1" />
@@ -48,6 +47,7 @@
           <SSIS:Package SSIS:Name="LoadODSDimClient.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSDimDistributor.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadODSDimShop.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="LoadODSDimProduct.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ABD_GR01_SRC2.conmgr" />
@@ -757,33 +757,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Package.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9EBCDC1C-F8CB-42CD-9F84-FC965A620382}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">98</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4DD2532E-52E2-4CA8-8A8B-E06C79C0C3FB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="LoadODSFactScore.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{A2CE1599-7A29-4DE5-B604-ED37280878F9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">LoadODSFactScore</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{97A41BA5-8EE8-4E2D-BA87-3B34D8F2BDC5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F200308B-15C4-4F3C-BD09-0C08E855B538}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -797,10 +780,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadODSFactSale</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B0AAB9D6-7F45-4C7D-BF3A-98B0054E606F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9F67A73D-DFB2-434F-9B40-A1BB5C67C7D5}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -814,10 +797,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadODSFactDelivery</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E8C6E3F5-C251-4206-B820-2728087ABC94}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A9E42732-2D58-447B-AECD-C5C672E12950}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -882,10 +865,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B9195B5F-A951-4B22-A155-DCA91054D518}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2C401471-681B-482F-A935-02808CE48C59}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -899,10 +882,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">18</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{8BDA25F3-6DB7-429B-A8AF-31615E2AF725}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F29D0686-6179-4293-A058-29B300C29724}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -933,10 +916,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{C65610D6-2C34-4577-ABBA-DD534EACF910}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{197A957D-BE4C-4D66-B1DE-C5FAFD3A1451}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -967,10 +950,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadDWDimProduct</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{23825211-72D5-43C8-A1BC-E1670E5C1B28}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0D476A40-204F-4E82-8160-A1B077D3FC19}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -984,10 +967,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadDWFactSale</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{975E1FEA-48F5-4FAD-A947-E35CC85663F9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{00EB9A8D-1DE1-439D-8C70-CDC42537A373}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1001,10 +984,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadDWFactDelivery</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9ADDA253-940E-4AA8-A314-6DBD2B9951F0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3967E1FF-D337-4F05-B7FB-1584FCD80F2F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1018,10 +1001,10 @@
                 <SSIS:Property SSIS:Name="Name">LoadODSdimClient</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">42</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">49</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CA8B87AF-2224-4429-B30A-7199B6640C5D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2D83CA65-3B7C-4E6E-8CD3-7F7ED7F86979}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1056,6 +1039,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{1A926577-59AE-400C-ADBA-621E55D91741}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">2</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="LoadODSDimProduct.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{6DA39C5F-95A5-4DB7-8885-2B27C5CEAD2B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">LoadODSDimProduct</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">123</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{65F80F95-26C1-4B04-B9A3-AA4AAC3CEDC7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
