@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadDWDimProduct"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{4F8CDB9B-5820-481F-805A-B21F75625E2E}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{23825211-72D5-43C8-A1BC-E1670E5C1B28}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -132,6 +132,7 @@
                     <outputColumn
                       refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[DateFrom]"
                       dataType="dbTimeStamp"
+                      description="DateFrom"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[DateFrom]"
@@ -492,7 +493,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProduct] SET [CategoryName] = ?,[CategorySourceID] = ?,[Name] = ?,[Price] = ?,[Active] = '0' WHERE [ProductSourceID] = ? AND [Active] = '1'</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProduct] SET [CategoryName] = ?,[CategorySourceID] = ?,[Name] = ?,[Price] = ?,[NotActive] = '0' WHERE [ProductSourceID] = ? AND [NotActive] = '1'</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -663,7 +664,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProduct] SET [CategoryName] = ?,[CategorySourceID] = ?,[Name] = ? WHERE [ProductSourceID] = ? AND [DateTo] IS NULL</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProduct] SET [CategoryName] = ?,[CategorySourceID] = ?,[Name] = ? WHERE [ProductSourceID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1046,7 +1047,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CategoryName], [CategorySourceID], [Name], [Price], [ProductSourceID],[DateFrom],[DateTo],[Active] FROM [dbo].[DimProduct]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CategoryName], [CategorySourceID], [Name], [Price], [ProductSourceID],[DateFrom],[DateTo],[NotActive] FROM [dbo].[DimProduct]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1054,7 +1055,7 @@
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
-                  name="UpdateChangingAttributeHistory">false</property>
+                  name="UpdateChangingAttributeHistory">true</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
@@ -1062,7 +1063,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the column name for the inferred member."
-                  name="InferredMemberIndicator">Active</property>
+                  name="InferredMemberIndicator">NotActive</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether inferred member updates are detected."
@@ -1199,9 +1200,9 @@
                       dataType="dbTimeStamp"
                       name="DateTo" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Active]"
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[NotActive]"
                       dataType="bool"
-                      name="Active" />
+                      name="NotActive" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1612,13 +1613,13 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="263,42"
-          Id="Package\Data Flow Task\Pobranie danych o produktach z ODS"
-          TopLeft="108.5,5.5" />
-        <NodeLayout
           Size="216,42"
           Id="Package\Data Flow Task\Slowly Changing Dimension"
           TopLeft="132,107.5" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\Data Flow Task\Pobranie danych o produktach z ODS"
+          TopLeft="108.5,5.5" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="240,47.5">
@@ -1929,19 +1930,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Pobranie danych o produktach z ODS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -1993,10 +1981,10 @@
     &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 2&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
   &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
   &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
   &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn&gt;Active&lt;/InferredIndicatorColumn&gt;
+  &lt;InferredIndicatorColumn&gt;NotActive&lt;/InferredIndicatorColumn&gt;
   &lt;ValueCurrent /&gt;
   &lt;ValueExpired /&gt;
   &lt;StartDateColumn&gt;DateFrom&lt;/StartDateColumn&gt;
@@ -2008,7 +1996,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Insert Destination">
+    design-time-name="Package\Data Flow Task\Pobranie danych o produktach z ODS">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

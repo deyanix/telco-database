@@ -12,8 +12,8 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{0F7C0634-7484-43BB-85CB-2411E88D647E}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{38A394BA-30A3-41F8-B0DA-6E90C65BDD4A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,6 +32,154 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Ładowanie tabeli DimClient\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Ładowanie tabeli DimClient\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Ładowanie tabeli DimClient\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Output].Columns[DateTo]"
+                      dataType="dbTimeStamp"
+                      description="DateTo"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Output].Columns[DateTo]"
+                      name="DateTo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Ładowanie tabeli DimClient\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ładowanie tabeli DimClient\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Ładowanie tabeli DimClient\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Ładowanie tabeli DimClient\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Output].Columns[DateFrom]"
+                      dataType="dbTimeStamp"
+                      description="DateFrom"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Output].Columns[DateFrom]"
+                      name="DateFrom"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Ładowanie tabeli DimClient\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Ładowanie tabeli DimClient\Insert Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -110,34 +258,34 @@
                       cachedLength="16"
                       cachedName="Sex"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Sex]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[AddressSourceID]"
                       cachedDataType="i4"
                       cachedName="AddressSourceID"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressSourceID]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[AddressSourceID]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[AddressSourceID]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[Country]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Country"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Country]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[City]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="City"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[City]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[City]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[Street]"
                       cachedDataType="wstr"
                       cachedLength="30"
                       cachedName="Street"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Street]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Street]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Street]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[BuildingNumber]"
                       cachedCodepage="1250"
@@ -145,7 +293,7 @@
                       cachedLength="6"
                       cachedName="BuildingNumber"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[BuildingNumber]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[BuildingNumber]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[BuildingNumber]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[ApartmentNumber]"
                       cachedCodepage="1250"
@@ -153,7 +301,7 @@
                       cachedLength="6"
                       cachedName="ApartmentNumber"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ApartmentNumber]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ApartmentNumber]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ApartmentNumber]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[ZipCode]"
                       cachedCodepage="1250"
@@ -161,27 +309,26 @@
                       cachedLength="6"
                       cachedName="ZipCode"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ZipCode]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ZipCode]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[ClientSourceID]"
                       cachedDataType="i4"
                       cachedName="ClientSourceID"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClientSourceID]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ClientSourceID]" />
                     <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[CreationDate]"
-                      cachedDataType="wstr"
-                      cachedLength="10"
-                      cachedName="CreationDate"
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[DateFrom]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateFrom"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Output].Columns[DateFrom]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].Columns[RegistrationDate]"
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="RegistrationDate"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]" />
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -242,19 +389,22 @@
                       name="ClientSourceID" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateTo]"
-                      dataType="wstr"
-                      length="10"
+                      dataType="dbTimeStamp"
                       name="DateTo" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateFrom]"
-                      dataType="wstr"
-                      length="10"
+                      dataType="dbTimeStamp"
                       name="DateFrom" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[RegistrationDate]"
                       dataType="wstr"
                       length="10"
                       name="RegistrationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModificationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="ModificationDate" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -301,7 +451,8 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClient] SET [AddressSourceID] = ?,[ApartmentNumber] = ?,[BuildingNumber] = ?,[City] = ?,[Country] = ?,[Sex] = ?,[Street] = ?,[ZipCode] = ? WHERE [ClientSourceID] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClient] SET [DateTo] = ?,
+[Active] = 0 WHERE [ClientSourceID] = ? AND [DateTo] IS NULL</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -324,174 +475,35 @@
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[AddressSourceID]"
-                      cachedDataType="i4"
-                      cachedName="AddressSourceID"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[AddressSourceID]" />
-                    <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[ApartmentNumber]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="6"
-                      cachedName="ApartmentNumber"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ApartmentNumber]" />
-                    <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[BuildingNumber]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="6"
-                      cachedName="BuildingNumber"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[BuildingNumber]" />
-                    <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[City]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="City"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[City]" />
-                    <inputColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[ClientSourceID]"
                       cachedDataType="i4"
                       cachedName="ClientSourceID"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]" />
                     <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[Country]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Country"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]" />
-                    <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[Sex]"
-                      cachedDataType="wstr"
-                      cachedLength="16"
-                      cachedName="Sex"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]" />
-                    <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[Street]"
-                      cachedDataType="wstr"
-                      cachedLength="30"
-                      cachedName="Street"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Street]" />
-                    <inputColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[ZipCode]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="6"
-                      cachedName="ZipCode"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ZipCode]" />
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].Columns[DateTo]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateTo"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Output].Columns[DateTo]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="i4"
+                      dataType="dbTimeStamp"
                       name="Param_0">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">17</property>
+                          name="DBParamInfoFlags">1</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
-                      name="Param_1">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
-                      name="Param_2">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      dataType="wstr"
-                      length="50"
-                      name="Param_3">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      dataType="wstr"
-                      length="50"
-                      name="Param_4">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      dataType="wstr"
-                      length="16"
-                      name="Param_5">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      dataType="wstr"
-                      length="30"
-                      name="Param_6">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      codePage="1250"
-                      dataType="str"
-                      length="6"
-                      name="Param_7">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">1</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                       dataType="i4"
-                      name="Param_8">
+                      name="Param_1">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -527,6 +539,139 @@
                       refId="Package\Ładowanie tabeli DimClient\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Ładowanie tabeli DimClient\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimClient] SET [RegistrationDate] = ?,[Sex] = ? WHERE [ClientSourceID] = ? AND [DateTo] IS NULL</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="{75E488AB-DCAC-4D65-8B5D-67EF4BD8E723}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ClientSourceID]"
+                      cachedDataType="i4"
+                      cachedName="ClientSourceID"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]" />
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[RegistrationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="RegistrationDate"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]" />
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Sex]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Sex"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="10"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="16"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -928,11 +1073,11 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [Sex], [Street], [ZipCode] FROM [dbo].[DimClient]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AddressSourceID], [ApartmentNumber], [BuildingNumber], [City], [ClientSourceID], [Country], [RegistrationDate], [Sex], [Street], [ZipCode],[DateFrom],[DateTo] FROM [dbo].[DimClient]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
-                  name="CurrentRowWhere"></property>
+                  name="CurrentRowWhere">[DateFrom] IS NOT NULL AND [DateTo] IS NULL</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
@@ -986,7 +1131,7 @@
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">3</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1001,7 +1146,7 @@
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">3</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1016,7 +1161,7 @@
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">3</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1030,7 +1175,7 @@
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">3</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1053,6 +1198,20 @@
                       cachedName="Country"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Country]"
                       lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[RegistrationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="RegistrationDate"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[RegistrationDate]"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1085,7 +1244,7 @@
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">3</property>
                       </properties>
                     </inputColumn>
                     <inputColumn
@@ -1100,7 +1259,7 @@
                         <property
                           dataType="System.Int32"
                           name="ColumnType"
-                          typeConverter="ColumnType">2</property>
+                          typeConverter="ColumnType">3</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -1137,6 +1296,11 @@
                       length="50"
                       name="Country" />
                     <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[RegistrationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="RegistrationDate" />
+                    <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Sex]"
                       dataType="wstr"
                       length="16"
@@ -1152,6 +1316,14 @@
                       dataType="str"
                       length="6"
                       name="ZipCode" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateFrom]"
+                      dataType="dbTimeStamp"
+                      name="DateFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DateTo]"
+                      dataType="dbTimeStamp"
+                      name="DateTo" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1206,23 +1378,565 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Ładowanie tabeli DimClient\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[Sex]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Sex"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Age]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Age]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[AddressSourceID]"
+                      cachedDataType="i4"
+                      cachedName="AddressSourceID"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[AddressSourceID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[AddressSourceID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Country"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Country]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[Street]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Street"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Street]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Street]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[BuildingNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="BuildingNumber"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[BuildingNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[BuildingNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[ApartmentNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ApartmentNumber"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ApartmentNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ApartmentNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[ZipCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ZipCode"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ZipCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ZipCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[ClientSourceID]"
+                      cachedDataType="i4"
+                      cachedName="ClientSourceID"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ClientSourceID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[RegistrationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="RegistrationDate"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="61"
+                      cachedName="Name"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[Surname]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Surname"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Surname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Surname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1].Columns[CreationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CreationDate"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[CreationDate]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[Sex]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Sex"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[Age]"
+                      cachedDataType="i2"
+                      cachedName="Age"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Age]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Age]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[AddressSourceID]"
+                      cachedDataType="i4"
+                      cachedName="AddressSourceID"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[AddressSourceID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[AddressSourceID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Country"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Country]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[Street]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Street"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Street]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Street]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[BuildingNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="BuildingNumber"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[BuildingNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[BuildingNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[ApartmentNumber]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ApartmentNumber"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ApartmentNumber]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ApartmentNumber]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[ZipCode]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ZipCode"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ZipCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ZipCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[ClientSourceID]"
+                      cachedDataType="i4"
+                      cachedName="ClientSourceID"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ClientSourceID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[RegistrationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="RegistrationDate"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="61"
+                      cachedName="Name"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[Surname]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Surname"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Surname]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Surname]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2].Columns[CreationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CreationDate"
+                      lineageId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[CreationDate]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Sex]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Sex]"
+                      name="Sex" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Age]"
+                      dataType="i2"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Age]"
+                      name="Age" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[AddressSourceID]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[AddressSourceID]"
+                      name="AddressSourceID" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[City]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Street]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Street]"
+                      name="Street" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[BuildingNumber]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[BuildingNumber]"
+                      name="BuildingNumber" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ApartmentNumber]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ApartmentNumber]"
+                      name="ApartmentNumber" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ZipCode]"
+                      codePage="1250"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ZipCode]"
+                      name="ZipCode" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ClientSourceID]"
+                      dataType="i4"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[ClientSourceID]"
+                      name="ClientSourceID" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[RegistrationDate]"
+                      name="RegistrationDate" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      dataType="wstr"
+                      length="61"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Surname]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[Surname]"
+                      name="Surname" />
+                    <outputColumn
+                      refId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[CreationDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1].Columns[CreationDate]"
+                      name="CreationDate" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\Ładowanie tabeli DimClient.Paths[Changing Attribute Updates Output]"
-              endId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input]"
+              endId="Package\Ładowanie tabeli DimClient\OLE DB Command 1.Inputs[OLE DB Command Input]"
               name="Changing Attribute Updates Output"
               startId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
             <path
-              refId="Package\Ładowanie tabeli DimClient.Paths[New Output]"
+              refId="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output]"
+              endId="Package\Ładowanie tabeli DimClient\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Ładowanie tabeli DimClient\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output1]"
               endId="Package\Ładowanie tabeli DimClient\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Ładowanie tabeli DimClient\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Ładowanie tabeli DimClient.Paths[Historical Attribute Inserts Output]"
+              endId="Package\Ładowanie tabeli DimClient\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\Ładowanie tabeli DimClient.Paths[New Output]"
+              endId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 1]"
               name="New Output"
               startId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\Ładowanie tabeli DimClient.Paths[OLE DB Command Output]"
+              endId="Package\Ładowanie tabeli DimClient\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\Ładowanie tabeli DimClient\OLE DB Command.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\Ładowanie tabeli DimClient.Paths[OLE DB Source Output]"
               endId="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
               name="OLE DB Source Output"
               startId="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Ładowanie tabeli DimClient.Paths[Union All Output 1]"
+              endId="Package\Ładowanie tabeli DimClient\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Ładowanie tabeli DimClient\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1251,18 +1965,196 @@
     design-time-name="Package\Ładowanie tabeli DimClient">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="264,42"
-          Id="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS"
-          TopLeft="186,5.5" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,42"
           Id="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension"
-          TopLeft="210,107.5" />
+          TopLeft="132,107.5" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS"
+          TopLeft="108,5.5" />
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimClient.Paths[OLE DB Source Output]"
-          TopLeft="318,47.5">
+          TopLeft="240,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Ładowanie tabeli DimClient\Derived Column"
+          TopLeft="21.0000000000001,209.5" />
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[Historical Attribute Inserts Output]"
+          TopLeft="188,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-88,60"
+              Start="0,0"
+              End="-88,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4878048780488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4878048780488"
+                    Point2="0,20.4878048780488"
+                    Point3="-4,20.4878048780488" />
+                  <mssgle:LineSegment
+                    End="-84,20.4878048780488" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-84,20.4878048780488"
+                    Point2="-88,20.4878048780488"
+                    Point3="-88,24.4878048780488" />
+                  <mssgle:LineSegment
+                    End="-88,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-119.05638671875,25.4878048780488,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Ładowanie tabeli DimClient\OLE DB Command"
+          TopLeft="5.50000000000006,311.5" />
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output]"
+          TopLeft="100,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,60"
+              Start="0,0"
+              End="-8,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-4,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,30"
+                    Point2="-8,30"
+                    Point3="-8,34" />
+                  <mssgle:LineSegment
+                    End="-8,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Ładowanie tabeli DimClient\Union All"
+          TopLeft="178.5,413.5" />
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[New Output]"
+          TopLeft="240,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.1666666666667,264"
+              Start="0,0"
+              End="19.1666666666667,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,152.365971107544" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,152.365971107544"
+                    Point2="0,156.365971107544"
+                    Point3="4,156.365971107544" />
+                  <mssgle:LineSegment
+                    End="15.1666666666667,156.365971107544" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.1666666666667,156.365971107544"
+                    Point2="19.1666666666667,156.365971107544"
+                    Point3="19.1666666666667,160.365971107544" />
+                  <mssgle:LineSegment
+                    End="19.1666666666667,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.5080533854167,161.365971107544,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[OLE DB Command Output]"
+          TopLeft="92.0000000000001,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128.833333333333,60"
+              Start="0,0"
+              End="128.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.53772070626" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.53772070626"
+                    Point2="0,35.53772070626"
+                    Point3="4,35.53772070626" />
+                  <mssgle:LineSegment
+                    End="124.833333333333,35.53772070626" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124.833333333333,35.53772070626"
+                    Point2="128.833333333333,35.53772070626"
+                    Point3="128.833333333333,39.53772070626" />
+                  <mssgle:LineSegment
+                    End="128.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Ładowanie tabeli DimClient\Derived Column 1"
+          TopLeft="156.5,515.5" />
+        <EdgeLayout
+          Id="Package\Ładowanie tabeli DimClient.Paths[Union All Output 1]"
+          TopLeft="240,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1285,99 +2177,72 @@
         <NodeLayout
           Size="165,42"
           Id="Package\Ładowanie tabeli DimClient\Insert Destination"
-          TopLeft="5.50000000000006,209.5" />
+          TopLeft="157.5,617.5" />
         <EdgeLayout
-          Id="Package\Ładowanie tabeli DimClient.Paths[New Output]"
-          TopLeft="283.333333333333,149.5">
+          Id="Package\Ładowanie tabeli DimClient.Paths[Derived Column Output1]"
+          TopLeft="240,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-195.333333333333,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-195.333333333333,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2647058823529" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2647058823529"
-                    Point2="0,24.2647058823529"
-                    Point3="-4,24.2647058823529" />
-                  <mssgle:LineSegment
-                    End="-191.333333333333,24.2647058823529" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-191.333333333333,24.2647058823529"
-                    Point2="-195.333333333333,24.2647058823529"
-                    Point3="-195.333333333333,28.2647058823529" />
-                  <mssgle:LineSegment
-                    End="-195.333333333333,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-124.758053385417,29.2647058823529,54.1827734375,11.43359375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="173,42"
-          Id="Package\Ładowanie tabeli DimClient\OLE DB Command"
-          TopLeft="231.5,209.5" />
+          Size="182,42"
+          Id="Package\Ładowanie tabeli DimClient\OLE DB Command 1"
+          TopLeft="301,209.5" />
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimClient.Paths[Changing Attribute Updates Output]"
-          TopLeft="352.666666666667,149.5">
+          TopLeft="292,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-34.6666666666667,60"
+              EndConnector="100,60"
               Start="0,0"
-              End="-34.6666666666667,52.5">
+              End="100,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2647058823529" />
+                    End="0,16.4878048780488" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2647058823529"
-                    Point2="0,24.2647058823529"
-                    Point3="-4,24.2647058823529" />
+                    Point1="0,16.4878048780488"
+                    Point2="0,20.4878048780488"
+                    Point3="4,20.4878048780488" />
                   <mssgle:LineSegment
-                    End="-30.6666666666667,24.2647058823529" />
+                    End="96,20.4878048780488" />
                   <mssgle:CubicBezierSegment
-                    Point1="-30.6666666666667,24.2647058823529"
-                    Point2="-34.6666666666667,24.2647058823529"
-                    Point3="-34.6666666666667,28.2647058823529" />
+                    Point1="96,20.4878048780488"
+                    Point2="100,20.4878048780488"
+                    Point3="100,24.4878048780488" />
                   <mssgle:LineSegment
-                    End="-34.6666666666667,52.5" />
+                    End="100,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-95.8672395833334,29.2647058823529,157.0678125,11.6630859375"
+              BoundingBox="-28.53390625,25.4878048780488,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Ładowanie tabeli DimClient\Slowly Changing Dimension">
     <Properties>
@@ -1393,25 +2258,25 @@
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[AddressSourceID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;AddressSourceID&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ApartmentNumber]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;ApartmentNumber&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[BuildingNumber]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;BuildingNumber&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[City]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;City&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ClientSourceID]&lt;/IdentificationString&gt;
@@ -1423,19 +2288,13 @@
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Country]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Country&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[CreationDate]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;DateFrom&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[RegistrationDate]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;RegistrationDate&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Sex]&lt;/IdentificationString&gt;
@@ -1447,31 +2306,46 @@
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[Street]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Street&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Pobranie informacji o klientach z ODS.Outputs[OLE DB Source Output].Columns[ZipCode]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;ZipCode&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
     &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
   &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
   &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
   &lt;CurrentIndicatorColumn /&gt;
   &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn /&gt;
-  &lt;EndDateColumn /&gt;
-  &lt;DateVariable /&gt;
+  &lt;StartDateColumn&gt;DateFrom&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;DateTo&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ładowanie tabeli DimClient\Pobranie informacji o klientach z ODS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
