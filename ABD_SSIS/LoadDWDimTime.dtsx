@@ -12,8 +12,8 @@
   DTS:ObjectName="LoadDWDimTime"
   DTS:PackageType="5"
   DTS:ProtectionLevel="2"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{537059E5-19E1-45D3-A098-8650C829BAC6}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{CEE8FD01-DF83-411C-ADE4-E17F7E4948C9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -110,45 +110,57 @@
                       cachedLength="10"
                       cachedName="Date"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Date]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Day]"
-                      cachedDataType="i2"
+                      cachedDataType="ui1"
                       cachedName="Day"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Day]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Day]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Month]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedDataType="ui1"
                       cachedName="Month"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Month]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Quarter]"
-                      cachedDataType="i2"
+                      cachedDataType="ui1"
                       cachedName="Quarter"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[TimeID]"
                       cachedDataType="i4"
                       cachedName="TimeID"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[TimeID]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeID]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[DayOfWeek]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedDataType="ui1"
                       cachedName="DayOfWeek"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[DayOfWeek]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeek]" />
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[Year]"
                       cachedDataType="i4"
                       cachedName="Year"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Year]" />
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[DayOfWeekName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DayOfWeekName"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeekName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeekName]" />
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].Columns[MonthName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MonthName"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -159,16 +171,15 @@
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
-                      dataType="i2"
+                      dataType="ui1"
                       name="Day" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
-                      dataType="wstr"
-                      length="20"
+                      dataType="ui1"
                       name="Month" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
-                      dataType="i2"
+                      dataType="ui1"
                       name="Quarter" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeID]"
@@ -176,13 +187,22 @@
                       name="TimeID" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
-                      dataType="wstr"
-                      length="20"
+                      dataType="ui1"
                       name="DayOfWeek" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
                       dataType="i4"
                       name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeekName]"
+                      dataType="wstr"
+                      length="50"
+                      name="DayOfWeekName" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimTime\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[MonthName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MonthName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -212,11 +232,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Ładowanie tabeli DimTime\ODS"
+              refId="Package\Ładowanie tabeli DimTime\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="ODS"
+              name="OLE DB Source"
               usesDispositions="true"
               version="7">
               <properties>
@@ -261,7 +281,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Ładowanie tabeli DimTime\ODS.Connections[OleDbConnection]"
+                  refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Connections[OleDbConnection]"
                   connectionManagerID="{4402820C-74D5-4EB1-BD63-BFA48D87E4BF}:external"
                   connectionManagerRefId="Project.ConnectionManagers[ABD_GR01_ODS]"
                   description="The OLE DB runtime connection used to access the database."
@@ -269,223 +289,221 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output]"
+                  refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Date]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
                       length="10"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Date]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Day]"
-                      dataType="i2"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Day]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Day]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Day]"
                       name="Day"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Month]"
-                      dataType="wstr"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Month]"
-                      length="20"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Month]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]"
                       name="Month"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Quarter]"
-                      dataType="i2"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]"
                       name="Quarter"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[TimeID]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[TimeID]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[TimeID]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeID]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeID]"
                       name="TimeID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[DayOfWeek]"
-                      dataType="wstr"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeek]"
+                      dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeek]"
-                      length="20"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[DayOfWeek]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeek]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeek]"
                       name="DayOfWeek"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Year]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Year]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Year]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]"
                       name="Year"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[MonthName]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
                       length="50"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[MonthName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]"
                       name="MonthName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[DayOfWeekName]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeekName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekName]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekName]"
                       length="50"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[DayOfWeekName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeekName]"
                       name="DayOfWeekName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[CreationDate]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreationDate]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
                       length="10"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[CreationDate]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreationDate]"
                       name="CreationDate"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
                       dataType="wstr"
                       length="10"
                       name="Date" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Day]"
                       dataType="ui1"
                       name="Day" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Month]"
                       dataType="ui1"
                       name="Month" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
                       dataType="ui1"
                       name="Quarter" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[TimeID]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeID]"
                       dataType="i4"
                       name="TimeID" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeek]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeek]"
                       dataType="ui1"
                       name="DayOfWeek" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Year]"
                       dataType="i4"
                       name="Year" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MonthName]"
                       dataType="wstr"
                       length="50"
                       name="MonthName" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekName]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeekName]"
                       dataType="wstr"
                       length="50"
                       name="DayOfWeekName" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreationDate]"
                       dataType="wstr"
                       length="10"
                       name="CreationDate" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
                       dataType="wstr"
                       length="10"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Day]"
                       dataType="ui1"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Day]"
                       name="Day" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Month]"
                       dataType="ui1"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Month]"
                       name="Month" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quarter]"
                       dataType="ui1"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quarter]"
                       name="Quarter" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[TimeID]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeID]"
                       dataType="i4"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[TimeID]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeID]"
                       name="TimeID" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[DayOfWeek]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DayOfWeek]"
                       dataType="ui1"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[DayOfWeek]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DayOfWeek]"
                       name="DayOfWeek" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Year]"
                       dataType="i4"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Year]"
                       name="Year" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[MonthName]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[MonthName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MonthName]"
                       name="MonthName" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[DayOfWeekName]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DayOfWeekName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[DayOfWeekName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DayOfWeekName]"
                       name="DayOfWeekName" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
                       dataType="wstr"
                       length="10"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreationDate]"
                       name="CreationDate" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -505,7 +523,7 @@
                   dataType="System.String"
                   description="Specifies the SELECT statement used to create a schema rowset."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Date], [Day], [DayOfWeek], [Month], [Quarter], [TimeID], [Year] FROM [dbo].[DimTime]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Date], [Day], [DayOfWeek], [DayOfWeekName], [Month], [MonthName], [Quarter], [TimeID], [Year] FROM [dbo].[DimTime]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -559,7 +577,7 @@
                       cachedLength="10"
                       cachedName="Date"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Date]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Date]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -569,10 +587,10 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Day]"
-                      cachedDataType="i2"
+                      cachedDataType="ui1"
                       cachedName="Day"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Day]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Day]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Day]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -582,11 +600,24 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DayOfWeek]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedDataType="ui1"
                       cachedName="DayOfWeek"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DayOfWeek]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[DayOfWeek]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeek]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DayOfWeekName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DayOfWeekName"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DayOfWeekName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeekName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -596,11 +627,24 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Month]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedDataType="ui1"
                       cachedName="Month"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Month]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Month]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[MonthName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MonthName"
+                      externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[MonthName]"
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -610,10 +654,10 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Quarter]"
-                      cachedDataType="i2"
+                      cachedDataType="ui1"
                       cachedName="Quarter"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Quarter]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Quarter]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -626,7 +670,7 @@
                       cachedDataType="i4"
                       cachedName="TimeID"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[TimeID]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[TimeID]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeID]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -639,7 +683,7 @@
                       cachedDataType="i4"
                       cachedName="Year"
                       externalMetadataColumnId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Year]"
-                      lineageId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output].Columns[Year]">
+                      lineageId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -657,21 +701,29 @@
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Day]"
-                      dataType="i2"
+                      dataType="ui1"
                       name="Day" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DayOfWeek]"
-                      dataType="wstr"
-                      length="20"
+                      dataType="ui1"
                       name="DayOfWeek" />
                     <externalMetadataColumn
-                      refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Month]"
+                      refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[DayOfWeekName]"
                       dataType="wstr"
-                      length="20"
+                      length="50"
+                      name="DayOfWeekName" />
+                    <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Month]"
+                      dataType="ui1"
                       name="Month" />
                     <externalMetadataColumn
+                      refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[MonthName]"
+                      dataType="wstr"
+                      length="50"
+                      name="MonthName" />
+                    <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Quarter]"
-                      dataType="i2"
+                      dataType="ui1"
                       name="Quarter" />
                     <externalMetadataColumn
                       refId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[TimeID]"
@@ -746,7 +798,7 @@
               refId="Package\Ładowanie tabeli DimTime.Paths[OLE DB Source Output]"
               endId="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
               name="OLE DB Source Output"
-              startId="Package\Ładowanie tabeli DimTime\ODS.Outputs[OLE DB Source Output]" />
+              startId="Package\Ładowanie tabeli DimTime\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -767,7 +819,7 @@
         <NodeLayout
           Size="209,42"
           Id="Package\Ładowanie tabeli DimTime"
-          TopLeft="196,113" />
+          TopLeft="203,120" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -777,16 +829,16 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="103,42"
-          Id="Package\Ładowanie tabeli DimTime\ODS"
-          TopLeft="274.5,5.5" />
-        <NodeLayout
           Size="216,42"
           Id="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension"
-          TopLeft="218,107.5" />
+          TopLeft="282,107.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Ładowanie tabeli DimTime\OLE DB Source"
+          TopLeft="316,5.5" />
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimTime.Paths[OLE DB Source Output]"
-          TopLeft="326,47.5">
+          TopLeft="392.25,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -809,10 +861,10 @@
         <NodeLayout
           Size="165,42"
           Id="Package\Ładowanie tabeli DimTime\Insert Destination"
-          TopLeft="243.5,209.5" />
+          TopLeft="307.5,209.5" />
         <EdgeLayout
           Id="Package\Ładowanie tabeli DimTime.Paths[New Output]"
-          TopLeft="326,149.5">
+          TopLeft="390,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -838,19 +890,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Ładowanie tabeli DimTime\ODS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Ładowanie tabeli DimTime\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -862,50 +901,62 @@
   &lt;TableName&gt;[dbo].[DimTime]&lt;/TableName&gt;
   &lt;InputToColumnsCollection&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[Date]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Date&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[Day]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Day]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Day&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[DayOfWeek]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeek]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;DayOfWeek&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[Month]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[DayOfWeekName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;DayOfWeekName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Month]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Month&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[Quarter]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[MonthName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;MonthName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Quarter]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Quarter&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[TimeID]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeID]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;TimeID&lt;/ColumnName&gt;
       &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;ODS.Outputs[OLE DB Source Output].Columns[Year]&lt;/IdentificationString&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[Year]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;Year&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
   &lt;/InputToColumnsCollection&gt;
   &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination 1&lt;/anyType&gt;
   &lt;/GeneratedComponentsIdentificationStrings&gt;
   &lt;FailFixedAttribute&gt;true&lt;/FailFixedAttribute&gt;
   &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
@@ -919,6 +970,19 @@
   &lt;DateVariable /&gt;
   &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
 &lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Ładowanie tabeli DimTime\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
